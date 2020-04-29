@@ -113,8 +113,6 @@ The full version additionally installs the following:
     * [Spyder (for Python 2 and Python 3)](https://github.com/spyder-ide/spyder)
     * [TexStudio](https://www.texstudio.org/)
 
-***
-
 ### <a id="faq-uninstall">What software do I have the option to uninstall?</a>
 
 You also have the option to remove some of the pre-installed software:
