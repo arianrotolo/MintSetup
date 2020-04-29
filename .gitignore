@@ -1,0 +1,3 @@
+*.html
+env/
+/bin/your_setup.sh
