@@ -54,6 +54,8 @@ $ bash setup.sh -f
 $ bash setup.sh --full
 ```
 
+***
+
 ## <a id="faq">Frequently Asked Questions (FAQ)</a>
 * [How does it work?](#faq-howitworks)
 * [Is anything installed that I can't disable?](#faq-required)
@@ -122,6 +124,3 @@ You also have the option to remove some of the pre-installed software:
 * [Pidgin](https://pidgin.im/)
 * [Rhythmbox](https://wiki.gnome.org/Apps/Rhythmbox)
 * [Xplayer](https://github.com/linuxmint/xplayer)
-
-***
-
