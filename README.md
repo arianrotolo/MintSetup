@@ -21,6 +21,8 @@ ddddMMh  dMM   :hNMNMNhNMNMNh: `NMm
             \.MMMMMMMMMMMMMMMMMMM
 ```
 
+Original Author: Alexander Michels
+https://github.com/alexandermichels/MintSetup
 
 ***
 
