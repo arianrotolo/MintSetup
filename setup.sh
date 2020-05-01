@@ -14,7 +14,7 @@ fi
 #upstream-lsb gets ubuntu release codename
 alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | grep -o --colour=never \"[a-z-]*$\""
 
-#update
+#updating
 sudo apt dist-upgrade -y
 sudo apt update -y
 sudo apt upgrade -y
@@ -155,12 +155,13 @@ if [ $fullinstallation == "true" ]; then
 fi
 COMMENT
 
-#update
+#updating
 sudo apt dist-upgrade -y
 sudo apt update -y
 sudo apt upgrade -y
 
-#clean
+#unistalling
+echo "Comenzando desinstalacion programas que no utilizo..."
 sudo apt remove -y  pidgin
 sudo apt remove -y  hexchat
 sudo apt remove -y  rhythmbox
@@ -172,11 +173,13 @@ sudo apt purge -y rhythmbox
 sudo apt purge -y mopidy
 sudo apt purge -y xplayer
 
+#cleaning
+echo "Comenzando limpieza de basura..."
 sudo apt autoremove -y
 sudo apt clean -y all
 rm -rf ~/.cache/thumbnails/*
 sudo du -sh /var/cache/apt
 
-#update
+#updating
 sudo apt update -y
 sudo apt upgrade -y
