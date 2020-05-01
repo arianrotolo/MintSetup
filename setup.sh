@@ -30,7 +30,7 @@ sudo apt upgrade -y
 
 #install system utilities
 sudo apt install -y curl
-sudo apt install apt-transport-https
+sudo apt install -y apt-transport-https
 
 #install G++
 sudo apt install -y g++
