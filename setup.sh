@@ -28,8 +28,9 @@ sudo apt upgrade -y
 #sudo apt install -y python3 python-dev python3-dev python3-distutils python3-pyqt5 build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
 #sudo python3 -m pip install setuptools wheel
 
-#install curl
+#install system utilities
 sudo apt install -y curl
+sudo apt install apt-transport-https
 
 #install G++
 sudo apt install -y g++
