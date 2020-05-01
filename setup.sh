@@ -8,7 +8,7 @@ elif [[ $2 = "-f" ]] || [[ $2 = "--full" ]]; then
     fullinstallation="true";
     echo "Full installation selected."
 else
-    echo "Lite installation will proceed by default."
+    echo "Normal (not full) installation will proceed by default."
 fi
 
 #upstream-lsb gets ubuntu release codename
@@ -20,13 +20,13 @@ sudo apt update -y
 sudo apt upgrade -y
 
 #install pip
-sudo apt install -y python-pip
-sudo apt install -y python3-pip
-sudo pip install --upgrade pip
+#sudo apt install -y python-pip
+#sudo apt install -y python3-pip
+#sudo pip install --upgrade pip
 
 #install a bunch of "essentials" for python3
-sudo apt install -y python3 python-dev python3-dev python3-distutils python3-pyqt5 build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
-sudo python3 -m pip install setuptools wheel
+#sudo apt install -y python3 python-dev python3-dev python3-distutils python3-pyqt5 build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
+#sudo python3 -m pip install setuptools wheel
 
 #install curl
 sudo apt install -y curl
@@ -78,6 +78,7 @@ sudo apt install -y seahorse
 #sudo apt update -y
 #sudo apt install -y google-chrome-stable
 
+<<'COMMENT'
 if [ $fullinstallation == "true" ]; then
 
     # VirtualEnv
@@ -152,6 +153,7 @@ if [ $fullinstallation == "true" ]; then
     sudo apt-get install owncloud-client
 
 fi
+COMMENT
 
 #update
 sudo apt dist-upgrade -y
