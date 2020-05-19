@@ -91,7 +91,7 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
     * [Google Chrome](https://www.google.com/chrome/)
     * [Pip (for Python 2 and Python 3)](https://pypi.org/project/pip/)
     * A variety of "essential" Python packages
-    * [Neofetch/Screenfetch]
+    * [Neofetch]
     * [Spotify](https://www.spotify.com/)
     * [VLC](https://www.videolan.org/vlc/index.html)
 
