@@ -116,11 +116,6 @@ if [ $fullinstallation == "true" ]; then
     # OpenGL API, Mesa Off-screen rendering extension, and stuff for [mujoco-py](https://github.com/openai/mujoco-py#install-mujoco)
     sudo apt install -y libosmesa6-dev libgl1-mesa-dev libopenmpi-dev patchelf
 
-    # ownCloud sync
-    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_18.10/ /' > /etc/apt/sources.list.d/isv:ownCloud:desktop.list"
-    sudo apt-get update
-    sudo apt-get install owncloud-client
-
 fi
 COMMENT
 
