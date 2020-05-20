@@ -117,7 +117,7 @@ if [ $fullinstallation == "true" ]; then
     # Texmaker LaTeX editor
     sudo apt install -y texmaker 
     
-    # Maven
+    # Gradle
     sudo apt install -y gradle
     
     # Maven
