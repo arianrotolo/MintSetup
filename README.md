@@ -21,8 +21,8 @@ ddddMMh  dMM   :hNMNMNhNMNMNh: `NMm
             \.MMMMMMMMMMMMMMMMMMM
 ```
 
-Original Author: Alexander Michels
-https://github.com/alexandermichels/MintSetup
+Idea from: [Alexander Michels] (https://github.com/alexandermichels/MintSetup)
+
 
 ***
 
@@ -34,8 +34,6 @@ https://github.com/alexandermichels/MintSetup
 ## <a id="intro">Introduction</a>
 
 This is a Bash script that will help you configure your [Linux Mint](https://www.linuxmint.com/) computers with all of the applications you want in a single script.
-
-***
 
 ## <a id="installation">Installation</a>
 
@@ -74,7 +72,6 @@ The app does a dist-upgrade and downloads [cURL](https://curl.haxx.se/) by defau
 ### <a id="faq-codename">What is a distribution codename?</a>
 
 It's kind of like a version for Ubuntu-based OSs. You can find yours by running the following command in the terminal:
-
 ```bash
 alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | grep -o --colour=never \"[a-z-]*$\""
 ```
@@ -108,7 +105,6 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 #### Full
 
 The full version additionally installs the following:
-
 * **Included Packages:**
     * [Texmaker LaTeX IDE] https://www.xm1math.net/texmaker/
     * [Maven](https://maven.apache.org/)
@@ -120,7 +116,6 @@ The full version additionally installs the following:
 ### <a id="faq-uninstall">What software do I have the option to uninstall?</a>
 
 You also have the option to remove some of the pre-installed software:
-
 * [Hexchat](https://hexchat.github.io/)
 * [Mopidy](https://www.mopidy.com/)
 * [Pidgin](https://pidgin.im/)
