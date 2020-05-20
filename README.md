@@ -81,7 +81,6 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 * **General Software:**
     * System Utilities
     * Python tools
-    * [Gradle](https://gradle.org/)
     * [Grip](https://github.com/joeyespo/grip)
     * [Spyder Scientific IDE for Python](https://github.com/spyder-ide/spyder)
     * [Pip (for Python 2 and Python 3)](https://pypi.org/project/pip/)
@@ -107,6 +106,7 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 The full version additionally installs the following:
 * **Included Packages:**
     * [Texmaker LaTeX IDE] https://www.xm1math.net/texmaker/
+    * [Gradle](https://gradle.org/)
     * [Maven](https://maven.apache.org/)
     * [Open MPI (libopenmpi-dev)](https://www.open-mpi.org/)
     * [Mesa 3D Graphics Library (libosmesa6-dev)](https://mesa3d.org/)
