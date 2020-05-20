@@ -84,36 +84,40 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 ### <a id="faq-options">What software do I have the option to install?</a>
 
 * **General Software:**
+    * System Utilities
+    * Python tools
+    * [Gradle](https://gradle.org/)
+    * [Grip](https://github.com/joeyespo/grip)
+    * [Spyder Scientific IDE for Python](https://github.com/spyder-ide/spyder)
+    * [Pip (for Python 2 and Python 3)](https://pypi.org/project/pip/)
+    * [Uncomplicated Firewall o ufw]
     * [CMake](https://cmake.org/)
     * [Curl](https://curl.haxx.se/)
-    * [G++](https://linux.die.net/man/1/g++)
-    * [Git (and configures a global email and name)](https://git-scm.com/)
+    * [Git (and configuration)](https://git-scm.com/)
     * [Google Chrome](https://www.google.com/chrome/)
-    * [Pip (for Python 2 and Python 3)](https://pypi.org/project/pip/)
-    * A variety of "essential" Python packages
-    * [Neofetch]
     * [Spotify](https://www.spotify.com/)
+    * [Visual Studio Code](https://code.visualstudio.com/)
     * [VLC](https://www.videolan.org/vlc/index.html)
+    * [Neovim](https://neovim.io/)
+    * [FileZilla] 
+    * [PuTTY] 
+    * [htop] 
+    * [Neofetch]
+    * [Seahorse] 
+    * [GtkHash] 
+    * [lm_sensors] 
 
 #### Full
 
 The full version additionally installs the following:
 
 * **Included Packages:**
-    * [Gradle](https://gradle.org/)
-    * [Grip](https://github.com/joeyespo/grip)
-    * [Open MPI (libopenmpi-dev)](https://www.open-mpi.org/)
-    * [JDK (Oracle Java 8)](https://www.oracle.com/technetwork/java/index.html)
+    * [Texmaker LaTeX IDE] https://www.xm1math.net/texmaker/
     * [Maven](https://maven.apache.org/)
+    * [Open MPI (libopenmpi-dev)](https://www.open-mpi.org/)
     * [Mesa 3D Graphics Library (libosmesa6-dev)](https://mesa3d.org/)
-    * [MiKTeK (as admin)](https://miktex.org/)
     * [PatchELF (utility to modify the dynamic linker and RPATH of ELF executables)](https://nixos.org/patchelf.html)
     * [OpenGL API (libgl1-mesa-dev)](https://www.mesa3d.org/)
-    * [QGIS](https://qgis.org/en/site/index.html)
-    * [R (with some R packages and essentials)](https://www.r-project.org/)
-    * [RStudio](https://www.rstudio.com/)
-    * [Spyder (for Python 2 and Python 3)](https://github.com/spyder-ide/spyder)
-    * [TexStudio](https://www.texstudio.org/)
 
 ### <a id="faq-uninstall">What software do I have the option to uninstall?</a>
 
