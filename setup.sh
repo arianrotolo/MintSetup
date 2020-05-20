@@ -33,15 +33,15 @@ sudo apt install -y cmake
 sudo apt install -y alien
 
 # install python tools
-#sudo apt install -y python3 python-dev python3-dev 
-#sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
-#sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
+sudo apt install -y python3 python-dev python3-dev 
+sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
+sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev      #librerias necesarias para compilar ultimo Python
 #sudo apt install -y python3-tk python-pytest 
 #sudo apt install -y python-matplotlib python3-matplotlib
 
 # install pip
 #sudo apt install -y python-pip python3-pip
-#sudo pip install --upgrade pip
+sudo pip install --upgrade pip                  #actualizar pip
 #sudo python3 -m pip install setuptools wheel
 
 # install pip packages
