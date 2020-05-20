@@ -79,10 +79,10 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 ### <a id="faq-options">What software do I have the option to install?</a>
 
 * **General Software:**
-    * System Utilities
-    * Python tools
-    * [Grip](https://github.com/joeyespo/grip)
+    * [System Utilities]
+    * [Python Tools]
     * [Pip (for Python 2 and Python 3)](https://pypi.org/project/pip/)
+    * [Pip Packages(Grip, Virtualenv, Numpy)](https://github.com/joeyespo/grip)
     * [Uncomplicated Firewall o ufw]
     * [CMake](https://cmake.org/)
     * [Curl](https://curl.haxx.se/)
