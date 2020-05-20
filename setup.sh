@@ -37,7 +37,7 @@ sudo apt install -y openssl libssl-dev
 sudo apt install -y openssh-server
 sudo apt install -y checkinstall
 sudo apt install -y 7zip unrar zip unzip
-sudo apt install -y synaptic
+sudo apt install -y synaptic gdebi
 sudo apt install -y cmake
 
 #install firewall
