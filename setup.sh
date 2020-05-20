@@ -32,15 +32,16 @@ sudo apt install -y synaptic gdebi
 sudo apt install -y cmake
 sudo apt install -y alien
 
-# install python and tools
+# install python tools
 #sudo apt install -y python3 python-dev python3-dev 
 #sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
 #sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
 #sudo apt install -y python3-tk python-pytest 
 #sudo apt install -y python-matplotlib python3-matplotlib
-#sudo apt install -y spyder spyder3 #IDE for scientifics
+
 #sudo pip install virtualenv 
 #sudo pip install grip
+#sudo pip install numpy
 
 # install python pip
 #sudo apt install -y python-pip python3-pip
@@ -116,6 +117,9 @@ if [ $fullinstallation == "true" ]; then
     
     # Texmaker LaTeX editor
     sudo apt install -y texmaker 
+    
+    # install Spyder IDE for scientifics
+    sudo apt install -y spyder spyder3
     
     # Gradle
     sudo apt install -y gradle
