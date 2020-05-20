@@ -33,7 +33,7 @@ https://github.com/alexandermichels/MintSetup
 
 ## <a id="intro">Introduction</a>
 
-This is Python App to build a Bash script that will help you configure your [Linux Mint](https://www.linuxmint.com/) computers with all of the applications you want in a single script. This is meant to be as general as possible (using your distro codename), but when I need to make a decision, I make it to work for the most recent version of Linux Mint Cinnamon, right now that is [Linux Mint 19 "Tara" Cinnamon](https://www.linuxmint.com/edition.php?id=254). The app gives you a wide variety of packages to choose from, pre-installed software to remove, and cleans up your setup in a quick and easy GUI.
+This is a Bash script that will help you configure your [Linux Mint](https://www.linuxmint.com/) computers with all of the applications you want in a single script.
 
 ***
 
@@ -44,13 +44,11 @@ Running the app is super simple.
 ### Setup.sh
 
 An older iteration of MintSetup without the GUI and without as many choices:
-
 ```bash
 $ bash setup.sh
 ```
 
 For the full version, use the `-f` or `--full` flag:
-
 ```bash
 $ bash setup.sh -f
 $ bash setup.sh --full
