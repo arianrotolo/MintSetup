@@ -43,10 +43,10 @@ sudo apt install -y python-matplotlib python3-matplotlib
 # install pip
 sudo apt install -y python-pip python3-pip
 sudo pip install --upgrade pip
-#sudo python3 -m pip install setuptools wheel #nose para que sirve todavia)
 
 # install pip packages
-#sudo pip install virtualenv 
+sudo pip install setuptools wheel
+sudo pip install virtualenv 
 #sudo pip install grip
 #sudo pip install numpy
 
