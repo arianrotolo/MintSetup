@@ -105,8 +105,9 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 
 The full version additionally installs the following:
 * **Included Packages:**
-    * [Texmaker LaTeX IDE] (https://www.xm1math.net/texmaker/)
-    * [LAMP (Linux, Apache, MySQL, PHP)]
+
+    * [LAMP (Linux, Apache, MySQL, PHP]
+    * [Texmaker LaTeX IDE](https://www.xm1math.net/texmaker/)
     * [Gradle](https://gradle.org/)
     * [Maven](https://maven.apache.org/)
     * [Open MPI (libopenmpi-dev)](https://www.open-mpi.org/)
