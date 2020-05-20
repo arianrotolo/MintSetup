@@ -39,14 +39,15 @@ sudo apt install -y alien
 #sudo apt install -y python3-tk python-pytest 
 #sudo apt install -y python-matplotlib python3-matplotlib
 
-#sudo pip install virtualenv 
-#sudo pip install grip
-#sudo pip install numpy
-
-# install python pip
+# install pip
 #sudo apt install -y python-pip python3-pip
 #sudo pip install --upgrade pip
 #sudo python3 -m pip install setuptools wheel
+
+# install pip packages
+#sudo pip install virtualenv 
+#sudo pip install grip
+#sudo pip install numpy
 
 # install firewall
 sudo apt install -y ufw gufw
