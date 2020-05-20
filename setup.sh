@@ -38,13 +38,11 @@ sudo apt install -y openssh-server
 sudo apt install -y checkinstall
 sudo apt install -y 7zip unrar zip unzip
 sudo apt install -y synaptic
-
-#install C and C++
-sudo apt install -y gcc
-sudo apt install -y g++
-sudo apt install -y libc
 sudo apt install -y cmake
-sudo apt install -y make
+
+#install firewall
+sudo apt install -y ufw gufw
+sudo ufw enable
 
 #install git
 sudo apt install -y git
@@ -76,6 +74,7 @@ sudo apt install -y lm-sensors
 sudo apt install -y gtkhash
 
 #install seahorse passwords
+sudo apt install -y gnupg
 sudo apt install -y seahorse
 
 #install vscode
