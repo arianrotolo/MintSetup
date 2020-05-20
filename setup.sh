@@ -19,23 +19,24 @@ sudo apt dist-upgrade -y
 sudo apt update -y
 sudo apt upgrade -y
 
-# install pip
-#sudo apt install -y python-pip
-#sudo apt install -y python3-pip
-#sudo pip install --upgrade pip
-
-# install tools for python
-#sudo apt install -y python3 python-dev python3-dev python3-distutils python3-pyqt5
+# install python and tools
+#sudo apt install -y python3 python-dev python3-dev 
+#sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
 #sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
-#sudo python3 -m pip install setuptools wheel
 #sudo apt install -y python3-tk python-pytest 
 #sudo apt install -y python-matplotlib python3-matplotlib
 #sudo apt install -y spyder spyder3 #IDE for scientifics
 #sudo pip install virtualenv 
 #sudo pip install grip
 
+# install python pip
+#sudo apt install -y python-pip python3-pip
+#sudo pip install --upgrade pip
+#sudo python3 -m pip install setuptools wheel
+
 # install system utilities
 sudo apt install -y build-essential
+sudo apt install -y software-properties-common
 sudo apt install -y curl
 sudo apt install -y apt-transport-https
 sudo apt install -y openssl libssl-dev
@@ -44,6 +45,7 @@ sudo apt install -y checkinstall
 sudo apt install -y 7zip unrar zip unzip
 sudo apt install -y synaptic gdebi
 sudo apt install -y cmake
+sudo apt install -y alien
 
 # install firewall
 sudo apt install -y ufw gufw
@@ -55,6 +57,9 @@ git config --global user.name "kilianpolkov"
 git config --global user.email "kilianpolkov@gmail.com"
 git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=3600'
+
+# install neofetch
+sudo apt install -y neofetch
 
 # install htop
 sudo apt install -y htop
@@ -69,9 +74,6 @@ sudo apt install -y filezilla
 # install VLC
 sudo apt install -y vlc
 
-# install neofetch
-sudo apt install -y neofetch
-
 # install lm-sensors
 sudo apt install -y lm-sensors
 
@@ -81,6 +83,11 @@ sudo apt install -y gtkhash
 # install seahorse passwords
 sudo apt install -y gnupg
 sudo apt install -y seahorse
+
+# install neovim
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt update -y
+sudo apt install -y neovim
 
 # install vscode
 #curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
