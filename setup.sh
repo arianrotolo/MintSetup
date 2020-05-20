@@ -15,7 +15,7 @@ fi
 alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | grep -o --colour=never \"[a-z-]*$\""
 
 # updating
-sudo apt dist-upgrade -y
+sudo apt full-upgrade -y
 sudo apt update -y
 sudo apt upgrade -y
 
