@@ -1,4 +1,4 @@
-# Mint Setup 2.0.0
+# Mint Setup
 
 ```
 
