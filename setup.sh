@@ -47,8 +47,8 @@ sudo pip install --upgrade pip
 # install pip packages
 sudo pip install setuptools wheel
 sudo pip install virtualenv 
-#sudo pip install grip
-#sudo pip install numpy
+sudo pip install grip
+sudo pip install numpy
 
 # install firewall
 sudo apt install -y ufw gufw
@@ -89,27 +89,27 @@ sudo apt install -y seahorse
 
 # install neovim
 #sudo add-apt-repository ppa:neovim-ppa/stable
-#sudo apt update -y
-#sudo apt install -y neovim
+sudo apt update -y
+sudo apt install -y neovim
 
 # install vscode
 #curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 #sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
 #sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-#sudo apt update -y
-#sudo apt install -y code
+sudo apt update -y
+sudo apt install -y code
 
 # install spotify (checked)
 #curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
 #echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-#sudo apt update
-#sudo apt install -y spotify-client
+sudo apt update
+sudo apt install -y spotify-client
 
 # install Chrome (checked)
 #wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 #echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-#sudo apt update -y
-#sudo apt install -y google-chrome-stable
+sudo apt update -y
+sudo apt install -y google-chrome-stable
 
 <<'COMMENT'
 if [ $fullinstallation == "true" ]; then
