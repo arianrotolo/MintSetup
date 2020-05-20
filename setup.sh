@@ -19,6 +19,19 @@ sudo apt full-upgrade -y
 sudo apt update -y
 sudo apt upgrade -y
 
+# install system utilities
+sudo apt install -y build-essential
+sudo apt install -y software-properties-common
+sudo apt install -y curl
+sudo apt install -y apt-transport-https
+sudo apt install -y openssl libssl-dev
+sudo apt install -y openssh-server
+sudo apt install -y checkinstall
+sudo apt install -y 7zip unrar zip unzip
+sudo apt install -y synaptic gdebi
+sudo apt install -y cmake
+sudo apt install -y alien
+
 # install python and tools
 #sudo apt install -y python3 python-dev python3-dev 
 #sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
@@ -33,19 +46,6 @@ sudo apt upgrade -y
 #sudo apt install -y python-pip python3-pip
 #sudo pip install --upgrade pip
 #sudo python3 -m pip install setuptools wheel
-
-# install system utilities
-sudo apt install -y build-essential
-sudo apt install -y software-properties-common
-sudo apt install -y curl
-sudo apt install -y apt-transport-https
-sudo apt install -y openssl libssl-dev
-sudo apt install -y openssh-server
-sudo apt install -y checkinstall
-sudo apt install -y 7zip unrar zip unzip
-sudo apt install -y synaptic gdebi
-sudo apt install -y cmake
-sudo apt install -y alien
 
 # install firewall
 sudo apt install -y ufw gufw
@@ -85,9 +85,9 @@ sudo apt install -y gnupg
 sudo apt install -y seahorse
 
 # install neovim
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt update -y
-sudo apt install -y neovim
+#sudo add-apt-repository ppa:neovim-ppa/stable
+#sudo apt update -y
+#sudo apt install -y neovim
 
 # install vscode
 #curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
