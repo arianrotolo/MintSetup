@@ -118,6 +118,9 @@ if [ $fullinstallation == "true" ]; then
     sudo apt install -y texmaker 
     
     # Maven
+    sudo apt install -y gradle
+    
+    # Maven
     sudo apt install -y maven
     
     # OpenGL API, Mesa Off-screen rendering extension, and stuff for [mujoco-py](https://github.com/openai/mujoco-py#install-mujoco)
