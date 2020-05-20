@@ -94,6 +94,9 @@ sudo apt install -y seahorse
 
 <<'COMMENT'
 if [ $fullinstallation == "true" ]; then
+    
+    # LAMP (Linux, Apache, MySQL, PHP)
+    sudo apt install apache2 php libapache2-mod-php phpmyadmin php-mysql mysql-server
 
     # VirtualEnv
     sudo pip install virtualenv
@@ -161,7 +164,6 @@ if [ $fullinstallation == "true" ]; then
     echo "deb-src https://qgis.org/ubuntu $(upstream-lsb) main"  | sudo tee -a /etc/apt/sources.list
 
     # ownCloud sync
-
     sudo sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_18.10/ /' > /etc/apt/sources.list.d/isv:ownCloud:desktop.list"
     sudo apt-get update
     sudo apt-get install owncloud-client
