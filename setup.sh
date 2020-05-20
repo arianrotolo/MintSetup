@@ -70,7 +70,13 @@ sudo apt install -y gtkhash
 #install seahorse passwords
 sudo apt install -y seahorse
 
+#install vscode
+#echo 'deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main' | sudo tee /etc/apt/sources.list.d/vscode.list
+#sudo apt update -y
+#sudo apt install -y code
+
 #install spotify
+#echo 'deb http://repository.spotify.com stable non-free' | sudo tee /etc/apt/sources.list.d/spotify.list
 #sudo apt install -y spotify-client
 
 #install Chrome
