@@ -82,7 +82,6 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
     * System Utilities
     * Python tools
     * [Grip](https://github.com/joeyespo/grip)
-    * [Spyder Scientific IDE for Python](https://github.com/spyder-ide/spyder)
     * [Pip (for Python 2 and Python 3)](https://pypi.org/project/pip/)
     * [Uncomplicated Firewall o ufw]
     * [CMake](https://cmake.org/)
@@ -107,6 +106,7 @@ The full version additionally installs the following:
 * **Included Packages:**
     * [LAMP (Linux, Apache, MySQL, PHP]
     * [Texmaker LaTeX IDE](https://www.xm1math.net/texmaker/)
+    * [Spyder Scientific IDE for Python](https://github.com/spyder-ide/spyder)
     * [Gradle](https://gradle.org/)
     * [Maven](https://maven.apache.org/)
     * [Open MPI (libopenmpi-dev)](https://www.open-mpi.org/)
