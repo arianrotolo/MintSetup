@@ -38,7 +38,6 @@ sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
 sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev      #librerias necesarias para compilar ultimo Python
 sudo apt install -y python3-tk python-pytest 
 sudo apt install -y python-matplotlib python3-matplotlib
-#despues de todo esto podes instalar la ultima version de Python tranqui
 
 # install pip
 sudo apt install -y python-pip python3-pip
