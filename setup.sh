@@ -25,18 +25,26 @@ sudo apt upgrade -y
 #sudo pip install --upgrade pip
 
 #install a bunch of "essentials" for python3
-#sudo apt install -y python3 python-dev python3-dev python3-distutils python3-pyqt5 build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
+#sudo apt install -y python3 python-dev python3-dev python3-distutils python3-pyqt5
+#sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
 #sudo python3 -m pip install setuptools wheel
 
 #install system utilities
+sudo apt install -y build-essential
 sudo apt install -y curl
 sudo apt install -y apt-transport-https
+sudo apt install -y openssl libssl-dev
+sudo apt install -y openssh-server
+sudo apt install -y checkinstall
+sudo apt install -y 7zip unrar zip unzip
+sudo apt install -y synaptic
 
-#install G++
+#install C and C++
+sudo apt install -y gcc
 sudo apt install -y g++
-
-#install cmake
+sudo apt install -y libc
 sudo apt install -y cmake
+sudo apt install -y make
 
 #install git
 sudo apt install -y git
@@ -64,7 +72,7 @@ sudo apt install -y neofetch
 #install lm-sensors
 sudo apt install -y lm-sensors
 
-#install gtkhash decrypt sha256
+#install gtkhash checksum
 sudo apt install -y gtkhash
 
 #install seahorse passwords
