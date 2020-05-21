@@ -71,9 +71,6 @@ sudo apt install -y htop
 sudo apt install -y putty
 sudo apt install -y putty-tools
 
-# install zsh shell
-sudo apt install -y zsh
-
 # install filezilla
 sudo apt install -y filezilla
 
@@ -113,6 +110,10 @@ sudo apt install -y spotify-client
 #echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
 sudo apt update -y
 sudo apt install -y google-chrome-stable
+
+# install zsh shell
+sudo apt install -y zsh
+sudo chsh -s $(which zsh)
 
 <<'COMMENT'
 if [ $fullinstallation == "true" ]; then
