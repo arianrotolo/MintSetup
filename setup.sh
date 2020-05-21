@@ -31,6 +31,7 @@ sudo apt install -y 7zip unrar zip unzip
 sudo apt install -y synaptic gdebi
 sudo apt install -y cmake
 sudo apt install -y alien
+sudo apt install -y tree
 
 # install python tools
 sudo apt install -y python3 python-dev python3-dev 
@@ -69,6 +70,9 @@ sudo apt install -y htop
 # install putty
 sudo apt install -y putty
 sudo apt install -y putty-tools
+
+# install zsh shell
+sudo apt install -y zsh
 
 # install filezilla
 sudo apt install -y filezilla
