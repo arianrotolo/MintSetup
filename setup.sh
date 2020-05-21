@@ -166,3 +166,5 @@ sudo du -sh /var/cache/apt
 #updating
 sudo apt update -y
 sudo apt upgrade -y
+
+echo $'\n'$"*** Finalizado. Reinicia el sistema! ***"
