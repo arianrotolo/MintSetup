@@ -1,0 +1,5 @@
+[user]
+	email = kilianpolkov@gmail.com
+	name = kilianpolkov
+[credential]
+	helper = cache --timeout=3600
