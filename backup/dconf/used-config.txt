@@ -1,0 +1,4 @@
+Path: /org/cinnamon/
+sounds
+theme
+desktop/keybindings/
