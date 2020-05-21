@@ -12,9 +12,9 @@ ZSH_THEME="spaceship"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # History in cache directory:
+#HISTFILE=~/.cache/zsh/history
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
 HIST_STAMPS="dd/mm/yyyy"
 
 # Standard: ~/.oh-my-zsh/plugins/* - Custom: ~/.oh-my-zsh/custom/plugins/
