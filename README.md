@@ -96,6 +96,7 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
     * [PuTTY] 
     * [htop] 
     * [Neofetch]
+    * [Calibre](https://calibre-ebook.com/)
     * [Seahorse] 
     * [GtkHash] 
     * [lm_sensors] 
