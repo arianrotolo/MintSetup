@@ -92,6 +92,10 @@ sudo apt install -y seahorse
 sudo apt update -y
 sudo apt install -y neovim
 
+# install calibre
+sudo apt update -y
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+
 # install vscode
 #curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 #sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
