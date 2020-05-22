@@ -172,4 +172,4 @@ sudo du -sh /var/cache/apt
 sudo apt update -y
 sudo apt upgrade -y
 
-echo $'\n'$"*** Finalizado. Reinicia el sistema! ***"
+echo $'\n'"*** Finalizado. Reinicia el sistema! ***"
