@@ -150,11 +150,6 @@ sudo apt upgrade -y
 
 #unistalling
 echo "Comenzando desinstalacion programas que no utilizo..."
-sudo apt remove -y  pidgin
-sudo apt remove -y  hexchat
-sudo apt remove -y  rhythmbox
-sudo apt remove -y  mopidy
-sudo apt remove -y  xplayer
 sudo apt purge -y pidgin
 sudo apt purge -y hexchat
 sudo apt purge -y rhythmbox
