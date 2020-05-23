@@ -1,70 +1,8 @@
 [/]
-panel-zone-text-sizes='[{"panelId":1,"left":0,"center":0,"right":0}]'
-desktop-effects-unmaximize-transition='easeNone'
-desktop-effects-maximize-transition='easeInExpo'
-desktop-effects-map-effect='traditional'
-workspace-osd-duration=0
-desktop-effects-close-effect='traditional'
+next-applet-id=13
+favorite-apps=['org.gnome.Terminal.desktop', 'synaptic.desktop', 'nemo.desktop', 'cinnamon-settings.desktop', 'google-chrome.desktop', 'spotify.desktop']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:show-desktop@cinnamon.org:1', 'panel1:left:2:grouped-window-list@cinnamon.org:2', 'panel1:right:0:workspace-switcher@cinnamon.org:3', 'panel1:right:1:systray@cinnamon.org:4', 'panel1:right:2:xapp-status@cinnamon.org:5', 'panel1:right:3:notifications@cinnamon.org:6', 'panel1:right:4:removable-drives@cinnamon.org:7', 'panel1:right:5:keyboard@cinnamon.org:8', 'panel1:right:6:network@cinnamon.org:9', 'panel1:right:7:sound@cinnamon.org:10', 'panel1:right:8:power@cinnamon.org:11', 'panel1:right:9:calendar@cinnamon.org:12']
 enabled-desklets=@as []
-desktop-effects-unmaximize-time=100
-panel-zone-icon-sizes='[{"panelId":1,"left":0,"center":0,"right":24}]'
-desktop-effects-map-time=100
-desktop-effects-minimize-effect='traditional'
-app-menu-label=''
-workspace-osd-visible=true
-workspace-expo-view-as-grid=true
-panels-height=['1:40', '2:40']
-next-applet-id=29
-desktop-effects-map-transition='easeOutQuad'
-desktop-effects-maximize-time=100
-desktop-effects-unmaximize-effect='none'
-desktop-effects-tile-transition='easeInQuad'
-panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 16}]'
-desktop-effects-maximize-effect='none'
-enabled-applets=['panel1:left:0:menu@cinnamon.org:13', 'panel1:left:1:show-desktop@cinnamon.org:14', 'panel1:left:2:grouped-window-list@cinnamon.org:15', 'panel1:right:3:systray@cinnamon.org:16', 'panel1:right:4:xapp-status@cinnamon.org:17', 'panel1:right:5:notifications@cinnamon.org:18', 'panel1:right:7:removable-drives@cinnamon.org:20', 'panel1:right:8:keyboard@cinnamon.org:21', 'panel1:right:9:network@cinnamon.org:22', 'panel1:right:10:sound@cinnamon.org:23', 'panel1:right:11:power@cinnamon.org:24', 'panel1:right:12:calendar@cinnamon.org:25', 'panel1:right:1:windows-quick-list@cinnamon.org:27', 'panel1:right:0:workspace-switcher@cinnamon.org:28']
-desktop-effects-minimize-time=160
-alttab-switcher-delay=100
-desktop-effects-tile-effect='none'
-desktop-effects-close-transition='easeOutQuad'
-panels-enabled=['1:0:bottom']
-desktop-effects-minimize-transition='easeInQuad'
-panel-edit-mode=false
-panels-hide-delay=['1:0', '2:0']
-panels-show-delay=['1:0', '2:0']
-workspace-osd-x=50
-desktop-effects-close-time=120
-workspace-osd-y=50
-favorite-apps=['org.gnome.Terminal.desktop', 'synaptic.desktop', 'nemo.desktop', 'cinnamon-settings.desktop', 'firefox.desktop', 'google-chrome.desktop', 'spotify.desktop']
-panels-autohide=['1:false', '2:false']
-desktop-effects-tile-time=100
-
-[settings-daemon/plugins/xsettings]
-buttons-have-icons=true
-
-[settings-daemon/peripherals/keyboard]
-repeat-interval=uint32 30
-delay=uint32 500
-numlock-state='on'
-
-[sounds]
-notification-enabled=false
-tile-enabled=false
-switch-enabled=false
-
-[muffin]
-tile-hud-threshold=25
-resize-threshold=24
-snap-modifier='Control'
-workspace-cycle=true
-edge-tiling=true
-
-[desktop/interface]
-clock-show-date=false
-toolkit-accessibility=true
-cursor-blink-time=1200
-cursor-theme='DMZ-White'
-gtk-theme='Mint-Y-Dark-Aqua'
-icon-theme='Mint-Y-Dark-Aqua'
 
 [desktop/keybindings/custom-keybindings/custom2]
 binding=['<Primary><Alt>3']
@@ -92,60 +30,21 @@ custom-list=['custom0', 'custom1', 'custom2', 'custom3']
 [desktop/keybindings/media-keys]
 www=['<Primary><Alt>c']
 
-[desktop/media-handling]
-autorun-x-content-start-app=['x-content/unix-software']
-autorun-x-content-ignore=@as []
-autorun-x-content-open-folder=@as []
-
-[desktop/screensaver]
-layout-group=0
-
-[desktop/notifications]
-bottom-notifications=false
-
-[desktop/session]
-idle-delay=uint32 3600
-
-[desktop/privacy]
-recent-files-max-age=5
-
-[desktop/wm/preferences]
-min-window-opacity=30
-button-layout=':minimize,maximize,close'
-theme='Mint-Y-Dark'
-action-scroll-titlebar='none'
-action-double-click-titlebar='toggle-maximize'
-action-middle-click-titlebar='lower'
-
-[desktop/a11y/applications]
-screen-keyboard-enabled=true
-
-[desktop/a11y/keyboard]
-togglekeys-enable-osd=false
-mousekeys-init-delay=300
-mousekeys-max-speed=10
-mousekeys-accel-time=300
-bouncekeys-delay=300
-slowkeys-delay=300
-
-[desktop/a11y/mouse]
-secondary-click-time=1.2
-dwell-time=1.2
-dwell-threshold=10
-secondary-click-enabled=false
-
 [desktop/sound]
 event-sounds=false
 
-[desktop/background]
-picture-uri='file:///usr/share/backgrounds/linuxmint-tricia/arestifo_at_the_top.jpg'
-picture-options='zoom'
+[sounds]
+notification-enabled=false
+tile-enabled=false
+switch-enabled=false
 
-[desktop/background/slideshow]
-image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-tricia.xml'
-delay=60
-slideshow-enabled=true
+[desktop/interface]
+icon-theme='Mint-Y-Dark-Aqua'
+gtk-theme='Mint-Y-Dark-Aqua'
+toolkit-accessibility=false
+
+[desktop/wm/preferences]
+theme='Mint-Y-Dark'
 
 [theme]
-theme-cache-updated=1589746962
 name='Mint-Y-Dark-Aqua'
