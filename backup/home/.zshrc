@@ -25,7 +25,11 @@ HIST_STAMPS="dd/mm/yyyy"
 # Standard: ~/.oh-my-zsh/plugins/* - Custom: ~/.oh-my-zsh/custom/plugins/
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
+# Agregar oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+# Agregar el perfil
+source ~/.profile
 
 # Overriding those provided by oh-my-zsh libs, plugins, and themes. Run `alias` to view all.
 alias zshrc='nvim ~/.zshrc' # Quick access to the ~/.zshrc file
