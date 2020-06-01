@@ -54,6 +54,10 @@ sudo pip install numpy
 sudo apt install -y ufw gufw
 sudo ufw enable
 
+# install zsh shell
+sudo apt install -y zsh
+sudo chsh -s $(which zsh)
+
 # install git
 sudo apt install -y git
 git config --global user.name "kilianpolkov"
@@ -76,9 +80,6 @@ sudo apt install -y putty-tools
 
 # install filezilla
 sudo apt install -y filezilla
-
-# install VLC
-sudo apt install -y vlc
 
 # install lm-sensors
 sudo apt install -y lm-sensors
@@ -118,9 +119,8 @@ sudo apt install -y spotify-client
 sudo apt update -y
 sudo apt install -y google-chrome-stable
 
-# install zsh shell
-sudo apt install -y zsh
-sudo chsh -s $(which zsh)
+# install VLC
+sudo apt install -y vlc
 
 <<'COMMENT'
 if [ $fullinstallation == "true" ]; then
