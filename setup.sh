@@ -61,6 +61,9 @@ git config --global user.email "kilianpolkov@gmail.com"
 git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=3600'
 
+# install dconf-editor
+sudo apt install -y dconf-editor
+
 # install neofetch
 sudo apt install -y neofetch
 
