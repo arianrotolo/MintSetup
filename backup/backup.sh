@@ -5,7 +5,7 @@ echo '*** Creando Copia ***'
 #crea carpetas y fichero de texto
 mkdir -p ~/Desktop/backup/home
 mkdir -p ~/Desktop/backup/dconf
-mkdir -p ~/Desktop/backup/Calibre Library/
+mkdir -p ~/Desktop/backup/Calibre\ Library/
 touch ~/Desktop/backup/home/list.txt
 touch ~/Desktop/backup/dconf/config.txt
 
