@@ -79,7 +79,7 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 ### <a id="faq-options">What software do I have the option to install?</a>
 
 #### General Software
-** Packages: **
+*  **Packages: **
     * [System Utilities]
     * [Python Tools]
     * [Pip (for Python 2 and Python 3)](https://pypi.org/project/pip/)
@@ -104,7 +104,7 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 
 #### Full
 The full version additionally installs the following:
-** Packages: **
+* **Packages: **
     * [LAMP (Linux, Apache, MySQL, PHP]
     * [Texmaker LaTeX IDE](https://www.xm1math.net/texmaker/)
     * [Spyder Scientific IDE for Python](https://github.com/spyder-ide/spyder)
