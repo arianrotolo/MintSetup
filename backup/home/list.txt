@@ -1,4 +1,0 @@
-'/home/arian/.zshrc' -> '/home/arian/Desktop/backup/home/.zshrc'
-'/home/arian/.bashrc' -> '/home/arian/Desktop/backup/home/.bashrc'
-'/home/arian/.profile' -> '/home/arian/Desktop/backup/home/.profile'
-'/home/arian/.gitconfig' -> '/home/arian/Desktop/backup/home/.gitconfig'
