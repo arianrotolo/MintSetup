@@ -43,13 +43,13 @@ Running the app is super simple.
 
 An older iteration of MintSetup without the GUI and without as many choices:
 ```bash
-$ bash setup.sh
+bash setup.sh
 ```
 
 For the full version, use the `-f` or `--full` flag:
 ```bash
-$ bash setup.sh -f
-$ bash setup.sh --full
+bash setup.sh -f
+bash setup.sh --full
 ```
 
 ***
