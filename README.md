@@ -113,6 +113,7 @@ The full option additionally installs the following packages:
     * [Maven](https://maven.apache.org/)
     * [Open MPI (libopenmpi-dev)](https://www.open-mpi.org/)
     * [Mesa 3D Graphics Library (libosmesa6-dev)](https://mesa3d.org/)
+    * [mujoco-py](https://github.com/openai/mujoco-py#install-mujoco)
     * [PatchELF (utility to modify the dynamic linker and RPATH of ELF executables)](https://nixos.org/patchelf.html)
     * [OpenGL API (libgl1-mesa-dev)](https://www.mesa3d.org/)
 
