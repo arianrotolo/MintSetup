@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
 
-fullinstallation="false";
-if [[ $1 = "-f" ]] || [[ $1 = "--full" ]]; then
-    fullinstallation="true";
+option="normal";
+
+read -p "Enter the option (n:normal ; f:full ; e:extra): " option
+
+if [[ $option == "f" ]] || [[ $option == "full" ]]; then
+    option="full";
     echo "Full installation selected."
-elif [[ $2 = "-f" ]] || [[ $2 = "--full" ]]; then
-    fullinstallation="true";
-    echo "Full installation selected."
+elif [[ $option == "e" ]] || [[ $option == "extra" ]]; then
+    option="extra";
+    echo "Extra packages selected."
 else
-    echo "Normal (not full) installation will proceed by default."
+    option="normal";
+    echo "Normal installation will proceed by default."
 fi
+
+echo "Selected option for installation: $option!"
 
 # upstream-lsb gets ubuntu release codename
 alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | grep -o --colour=never \"[a-z-]*$\""
@@ -19,132 +25,146 @@ sudo apt full-upgrade -y
 sudo apt update -y
 sudo apt upgrade -y
 
-# install system utilities
-sudo apt install -y build-essential
-sudo apt install -y software-properties-common
-sudo apt install -y curl
-sudo apt install -y apt-transport-https
-sudo apt install -y openssl libssl-dev
-sudo apt install -y openssh-server
-sudo apt install -y checkinstall
-sudo apt install -y 7zip unrar zip unzip
-sudo apt install -y synaptic gdebi
-sudo apt install -y cmake
-sudo apt install -y alien
-sudo apt install -y tree
+if [ $option == "normal" ]; then
 
-# install python tools
-sudo apt install -y python3 python-dev python3-dev 
-sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
-sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev      #librerias necesarias para compilar ultimo Python
-sudo apt install -y python3-tk python-pytest 
-sudo apt install -y python-matplotlib python3-matplotlib
+    # install zsh shell
+    sudo apt install -y zsh
+    sudo chsh -s $(which zsh)
 
-# install pip
-sudo apt install -y python-pip python3-pip
-sudo pip install --upgrade pip
+    # install system utilities
+    sudo apt install -y build-essential
+    sudo apt install -y software-properties-common
+    sudo apt install -y curl
+    sudo apt install -y apt-transport-https
+    sudo apt install -y openssl libssl-dev
+    sudo apt install -y openssh-server
+    sudo apt install -y checkinstall
+    sudo apt install -y 7zip unrar zip unzip
+    sudo apt install -y synaptic gdebi
+    sudo apt install -y cmake
+    sudo apt install -y alien
+    sudo apt install -y tree
 
-# install pip packages
-sudo pip install setuptools wheel
-sudo pip install virtualenv 
-sudo pip install grip
-sudo pip install numpy
+    # install python tools
+    sudo apt install -y python3 python-dev python3-dev 
+    sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
+    sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev      #librerias necesarias para compilar ultimo Python
+    sudo apt install -y python3-tk python-pytest 
+    sudo apt install -y python-matplotlib python3-matplotlib
 
-# install firewall
-sudo apt install -y ufw gufw
-sudo ufw enable
+    # install pip
+    sudo apt install -y python-pip python3-pip
+    sudo pip install --upgrade pip
 
-# install zsh shell
-sudo apt install -y zsh
-sudo chsh -s $(which zsh)
+    # install pip packages
+    sudo pip install setuptools wheel
+    sudo pip install virtualenv 
+    sudo pip install grip
+    sudo pip install numpy
 
-# install git
-sudo apt install -y git
-git config --global user.name "kilianpolkov"
-git config --global user.email "kilianpolkov@gmail.com"
-git config --global credential.helper cache
-git config --global credential.helper 'cache --timeout=3600'
+    # install firewall
+    sudo apt install -y ufw gufw
+    sudo ufw enable
 
-# install dconf-editor
-sudo apt install -y dconf-editor
+    # install git
+    sudo apt install -y git
+    git config --global user.name "kilianpolkov"
+    git config --global user.email "kilianpolkov@gmail.com"
+    git config --global credential.helper 'cache --timeout=3600'
 
-# install neofetch
-sudo apt install -y neofetch
+    # install dconf-editor
+    sudo apt install -y dconf-editor
 
-# install htop
-sudo apt install -y htop
+    # install neofetch
+    sudo apt install -y neofetch
 
-# install putty
-sudo apt install -y putty
-sudo apt install -y putty-tools
+    # install htop
+    sudo apt install -y htop
 
-# install filezilla
-sudo apt install -y filezilla
+    # install putty
+    sudo apt install -y putty
+    sudo apt install -y putty-tools
 
-# install lm-sensors
-sudo apt install -y lm-sensors
+    # install filezilla
+    sudo apt install -y filezilla
 
-# install gtkhash checksum
-sudo apt install -y gtkhash
+    # install lm-sensors
+    sudo apt install -y lm-sensors
 
-# install seahorse passwords
-sudo apt install -y gnupg
-sudo apt install -y seahorse
+    # install gtkhash
+    sudo apt install -y gtkhash
 
-# install neovim
-#sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt update -y
-sudo apt install -y neovim
+    # install seahorse passwords
+    sudo apt install -y gnupg
+    sudo apt install -y seahorse
 
-# install calibre
-sudo apt update -y
-sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
-
-# install vscode
-#curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-#sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-#sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo apt update -y
-sudo apt install -y code
-
-# install spotify (checked)
-#curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
-#echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-sudo apt update
-sudo apt install -y spotify-client
-
-# install Chrome (checked)
-#wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-#echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-sudo apt update -y
-sudo apt install -y google-chrome-stable
-
-# install VLC
-sudo apt install -y vlc
+fi
 
 <<'COMMENT'
-if [ $fullinstallation == "true" ]; then
+ HOLA
+COMMENT
+
+if [ $option == "full" ]; then
     
+    echo "Iniciando instalacion de paquetes full..."
+
+    # install AMD drivers (OpenGL, Vulkan, Mesa)
+    sudo add-apt-repository ppa:oibaf/graphics-drivers
+    sudo apt update -y
+    sudo apt upgrade -y
+    sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils 
+    sudo apt install -y libosmesa6-dev libgl1-mesa-dev libopenmpi-dev patchelf 
+
+    # install neovim
+    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo apt update -y
+    sudo apt install -y neovim
+    
+    # install calibre
+    sudo apt update -y
+    sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+
+    # install vscode
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+    sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+    sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+    sudo apt update -y
+    sudo apt install -y code
+
+    # install spotify
+    curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
+    echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+    sudo apt update
+    sudo apt install -y spotify-client
+
+    # install Chrome
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+    sudo apt update -y
+    sudo apt install -y google-chrome-stable
+
+fi
+
+if [ $option == "extra" ]; then
+
+    echo "Iniciando instalacion de paquetes extra..."
+
     # LAMP (Linux, Apache, MySQL, PHP)
-    sudo apt install apache2 php libapache2-mod-php phpmyadmin php-mysql mysql-server
+    #sudo apt install apache2 php libapache2-mod-php phpmyadmin php-mysql mysql-server
+    
+    # install Spyder IDE for scientifics
+    #sudo apt install -y spyder spyder3
     
     # Texmaker LaTeX editor
     sudo apt install -y texmaker 
-    
-    # install Spyder IDE for scientifics
-    sudo apt install -y spyder spyder3
-    
+
     # Gradle
     sudo apt install -y gradle
     
     # Maven
     sudo apt install -y maven
-    
-    # OpenGL API, Mesa Off-screen rendering extension, and stuff for [mujoco-py](https://github.com/openai/mujoco-py#install-mujoco)
-    sudo apt install -y libosmesa6-dev libgl1-mesa-dev libopenmpi-dev patchelf
 
 fi
-COMMENT
 
 #updating
 sudo apt dist-upgrade -y
@@ -152,7 +172,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 #unistalling
-echo "Comenzando desinstalacion programas que no utilizo..."
+echo "Iniciando desinstalacion paquetes..."
 sudo apt purge -y pidgin
 sudo apt purge -y hexchat
 sudo apt purge -y rhythmbox
@@ -160,7 +180,7 @@ sudo apt purge -y mopidy
 sudo apt purge -y xplayer
 
 #cleaning
-echo "Comenzando limpieza de basura..."
+echo "Iniciando limpieza de basura..."
 sudo apt autoremove -y
 sudo apt clean -y all
 rm -rf ~/.cache/thumbnails/*
