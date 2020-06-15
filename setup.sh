@@ -167,7 +167,7 @@ if [ $option == "extra" ]; then
 fi
 
 #updating
-sudo apt dist-upgrade -y
+sudo apt full-upgrade -y
 sudo apt update -y
 sudo apt upgrade -y
 
