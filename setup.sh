@@ -39,21 +39,21 @@ if [ $option == "normal" ]; then
     sudo apt install -y openssl libssl-dev
     sudo apt install -y openssh-server
     sudo apt install -y checkinstall
-    sudo apt install -y 7zip unrar zip unzip
+    sudo apt install -y p7zip unrar zip unzip
     sudo apt install -y synaptic gdebi
     sudo apt install -y cmake
-    sudo apt install -y alien
     sudo apt install -y tree
+    #sudo apt install -y alien
 
     # install python tools
     sudo apt install -y python3 python-dev python3-dev 
     sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
     sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev      #librerias necesarias para compilar ultimo Python
     sudo apt install -y python3-tk python-pytest 
-    sudo apt install -y python-matplotlib python3-matplotlib
+    sudo apt install -y python3-matplotlib
 
     # install pip
-    sudo apt install -y python-pip python3-pip
+    sudo apt install -y python3-pip
     sudo pip install --upgrade pip
 
     # install pip packages
