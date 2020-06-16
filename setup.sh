@@ -116,7 +116,7 @@ if [ $option == "full" ]; then
     sudo apt install -y libosmesa6-dev libgl1-mesa-dev libopenmpi-dev patchelf 
 
     # install Neovim
-    sudo add-apt-repository ppa:neovim-ppa/stable
+    #sudo add-apt-repository ppa:neovim-ppa/stable
     sudo apt update -y
     sudo apt install -y neovim
     
