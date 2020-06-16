@@ -115,12 +115,12 @@ if [ $option == "full" ]; then
     sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils 
     sudo apt install -y libosmesa6-dev libgl1-mesa-dev libopenmpi-dev patchelf 
 
-    # install neovim
+    # install Neovim
     sudo add-apt-repository ppa:neovim-ppa/stable
     sudo apt update -y
     sudo apt install -y neovim
     
-    # install calibre
+    # install Calibre
     sudo apt update -y
     sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
 
@@ -130,14 +130,14 @@ if [ $option == "full" ]; then
     sudo apt update -y
     sudo apt install -y google-chrome-stable
     
-    # install vscode
+    # install VSCode
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
     sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
     sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
     sudo apt update -y
     sudo apt install -y code
 
-    # install spotify
+    # install Spotify
     curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
     sudo apt update
