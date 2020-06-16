@@ -109,7 +109,7 @@ if [ $option == "full" ]; then
     echo "Iniciando instalacion de paquetes full..."
 
     # install AMD drivers (OpenGL, Vulkan, Mesa)
-    sudo add-apt-repository ppa:oibaf/graphics-drivers
+    #sudo add-apt-repository ppa:oibaf/graphics-drivers
     sudo apt update -y
     sudo apt upgrade -y
     sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils 
