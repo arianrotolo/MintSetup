@@ -124,6 +124,12 @@ if [ $option == "full" ]; then
     sudo apt update -y
     sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
 
+    # install Chrome
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+    sudo apt update -y
+    sudo apt install -y google-chrome-stable
+    
     # install vscode
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
     sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
@@ -136,13 +142,7 @@ if [ $option == "full" ]; then
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
     sudo apt update
     sudo apt install -y spotify-client
-
-    # install Chrome
-    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-    sudo apt update -y
-    sudo apt install -y google-chrome-stable
-
+    
 fi
 
 if [ $option == "extra" ]; then
