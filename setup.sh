@@ -179,11 +179,8 @@ sudo apt upgrade -y
 
 #unistalling
 echo "Iniciando desinstalacion paquetes..."
-sudo apt purge -y pidgin
 sudo apt purge -y hexchat
-sudo apt purge -y rhythmbox
-sudo apt purge -y mopidy
-sudo apt purge -y xplayer
+#sudo apt purge -y rhythmbox
 
 #cleaning
 echo "Iniciando limpieza de basura..."
