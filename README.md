@@ -78,7 +78,7 @@ The default option installs the following packages:
 #### Full Software
 The full option additionally installs the following packages:
 * **Full:**
-    * [LAMP (Linux, Apache, MySQL, PHP]
+    * [LAMP (Linux, Apache, MySQL, PHP)](https://www.apache.org/)
     * [Texmaker LaTeX IDE](https://www.xm1math.net/texmaker/)
     * [Spyder Scientific IDE for Python](https://github.com/spyder-ide/spyder)
     * [Gradle](https://gradle.org/)
