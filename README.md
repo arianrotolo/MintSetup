@@ -56,7 +56,7 @@ The default option installs the following packages:
     * [Python Tools]
     * [Pip (for Python 2 and Python 3)](https://pypi.org/project/pip/)
     * [Pip Packages(Grip, Virtualenv, Numpy)](https://github.com/joeyespo/grip)
-    * [Uncomplicated Firewall o ufw]
+    * [Uncomplicated Firewall o ufw](https://wiki.ubuntu.com/UncomplicatedFirewall)
     * [CMake](https://cmake.org/)
     * [cURL](https://curl.haxx.se/)
     * [Git (and configuration)](https://git-scm.com/)
@@ -65,14 +65,14 @@ The default option installs the following packages:
     * [Visual Studio Code](https://code.visualstudio.com/)
     * [VLC](https://www.videolan.org/vlc/index.html)
     * [Neovim](https://neovim.io/)
-    * [FileZilla] 
-    * [PuTTY] 
-    * [htop] 
-    * [Neofetch]
+    * [FileZilla](https://filezilla-project.org/)
+    * [PuTTY](https://www.puttygen.com/)
+    * [htop](https://github.com/htop-dev/htop)
+    * [Neofetch](https://github.com/dylanaraps/neofetch)
     * [Calibre](https://calibre-ebook.com/)
-    * [Seahorse] 
-    * [GtkHash] 
-    * [lm_sensors] 
+    * [Seahorse](https://gitlab.gnome.org/GNOME/seahorse) 
+    * [GtkHash](https://github.com/tristanheaven/gtkhash) 
+    * [lm_sensors](https://github.com/tristanheaven/gtkhash)
 
 #### Full Software
 The full option additionally installs the following packages:
