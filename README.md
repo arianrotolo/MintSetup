@@ -2,7 +2,6 @@
 
 Idea from: [Alexander Michels](https://github.com/alexandermichels/MintSetup)
 
-***
 ## Table of Contents
 * <a href="#intro">Introduction</a>
 * <a href="#instalation">Instalation</a>
@@ -59,7 +58,7 @@ The default option installs the following packages:
     * [Pip Packages(Grip, Virtualenv, Numpy)](https://github.com/joeyespo/grip)
     * [Uncomplicated Firewall o ufw]
     * [CMake](https://cmake.org/)
-    * [Curl](https://curl.haxx.se/)
+    * [cURL](https://curl.haxx.se/)
     * [Git (and configuration)](https://git-scm.com/)
     * [Google Chrome](https://www.google.com/chrome/)
     * [Spotify](https://www.spotify.com/)
