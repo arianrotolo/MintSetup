@@ -61,6 +61,7 @@ The default option installs the following packages:
     * [cURL](https://curl.haxx.se/)
     * [Git (and configuration)](https://git-scm.com/)
     * [Google Chrome](https://www.google.com/chrome/)
+    * [Brave Browser](https://brave.com/)
     * [Spotify](https://www.spotify.com/)
     * [Visual Studio Code](https://code.visualstudio.com/)
     * [VLC](https://www.videolan.org/vlc/index.html)
