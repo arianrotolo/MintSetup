@@ -1,31 +1,8 @@
 # Mint Setup
 
-```
-
-MMMMMMMMMMMMMMMMMMMMMMMMMmds+.        
-MMm----::-://////////////oymNMd+`     
-MMd      /++                -sNMd:    
-MMNso/`  dMM    `.::-. .-::.` .hMN:   
-ddddMMh  dMM   :hNMNMNhNMNMNh: `NMm  
-    NMm  dMM  .NMN/-+MMM+-/NMN` dMM            __  __ _       _   ____       _
-    NMm  dMM  -MMm  `MMM   dMM. dMM           |  \/  (_)_ __ | |_/ ___|  ___| |_ _   _ _ __
-    NMm  dMM  -MMm  `MMM   dMM. dMM           | |\/| | | '_ \| __\___ \ / _ \ __| | | | '_ \
-    NMm  dMM  -MMm  `MMM   dMM. dMM           | |  | | | | | | |_ ___) |  __/ |_| |_| | |_) |   
-    NMm  dMM  .mmd  `mmm   yMM. dMM           |_|  |_|_|_| |_|\__|____/ \___|\__|\__,_| .__/   
-    NMm  dMM`  ..`   ...   ydm. dMM                                                   |_|    
-    hMM- +MMd/-------...-:sdds  dMM   
-    -NMm- :hNMNNNmdddddddddy/`  dMM   
-     -dMNs-``-::::-------.``    dMM   
-      `/dMNmy+/:-------------:/yMMM   
-         ./ydNMMMMMMMMMMMMMMMMMMMMM
-            \.MMMMMMMMMMMMMMMMMMM
-```
-
 Idea from: [Alexander Michels](https://github.com/alexandermichels/MintSetup)
 
-
 ***
-
 ## Table of Contents
 * <a href="#intro">Introduction</a>
 * <a href="#instalation">Instalation</a>
@@ -33,15 +10,11 @@ Idea from: [Alexander Michels](https://github.com/alexandermichels/MintSetup)
 
 ## <a id="intro">Introduction</a>
 
-This is a Bash script that will help you configure your [Linux Mint](https://www.linuxmint.com/) computers with all of the applications you want in a single script.
+This is a Bash script that configure your [Linux Mint](https://www.linuxmint.com/)
 
 ## <a id="installation">Installation</a>
 
-Running the app is super simple.
-
-### Setup.sh
-
-An older iteration of MintSetup without the GUI and without as many choices:
+Run the script
 ```bash
 bash setup.sh
 ```
@@ -49,7 +22,6 @@ bash setup.sh
 For the full version, use the `-f` or `--full` flag:
 ```bash
 bash setup.sh -f
-bash setup.sh --full
 ```
 
 ***
@@ -63,15 +35,15 @@ bash setup.sh --full
 
 ### <a id="faq-howitworks">How does it work?</a>
 
-The `commands.json` file acts a huge dictionary that maps the appropriate software to the appropriate commands to install them. The Python3 app runs the GUI and records your choices, then uses this dictionary to compile all the necessary commands you need into a Bash script called `your_setup.sh` in the /bin folder. Feel free to check out your setup script there.
+The `commands.json` file acts a huge dictionary that maps the appropriate software to the appropriate commands to install them. The Python3 app runs the GUI and records your choices, then uses this dictionary to compile all the necessary commands you need into a Bash script called `your_setup.sh` in the /bin folder.
 
 ### <a id="faq-required">Is anything installed that I can't disable?</a>
 
-The app does a dist-upgrade and downloads [cURL](https://curl.haxx.se/) by default. Here is a full list of everything else you can download:
+The app does a dist-upgrade and downloads [cURL](https://curl.haxx.se/) by default
 
 ### <a id="faq-codename">What is a distribution codename?</a>
 
-It's kind of like a version for Ubuntu-based OSs. You can find yours by running the following command in the terminal:
+It's kind of like a version for Ubuntu-based OSs. You can find yours by running:
 ```bash
 alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | grep -o --colour=never \"[a-z-]*$\""
 ```
