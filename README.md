@@ -53,31 +53,33 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 The default option installs the following packages:
 *  **Default:**
     * [System Utilities]
+    ** [CMake](https://cmake.org/)
+    ** [cURL](https://curl.haxx.se/)
     * [Python Tools]
-    * [Pip (for Python 2 and Python 3)](https://pypi.org/project/pip/)
+    * [Python Pip)](https://pypi.org/project/pip/)
     * [Pip Packages(Grip, Virtualenv, Numpy)](https://github.com/joeyespo/grip)
-    * [Uncomplicated Firewall o ufw](https://wiki.ubuntu.com/UncomplicatedFirewall)
-    * [CMake](https://cmake.org/)
-    * [cURL](https://curl.haxx.se/)
+    * [Uncomplicated Firewall o ufw(and enable it)](https://wiki.ubuntu.com/UncomplicatedFirewall)
     * [Git (and configuration)](https://git-scm.com/)
-    * [Google Chrome](https://www.google.com/chrome/)
-    * [Brave Browser](https://brave.com/)
-    * [Spotify](https://www.spotify.com/)
-    * [Visual Studio Code](https://code.visualstudio.com/)
-    * [VLC](https://www.videolan.org/vlc/index.html)
-    * [Neovim](https://neovim.io/)
-    * [FileZilla](https://filezilla-project.org/)
-    * [PuTTY](https://www.puttygen.com/)
+    * [dconf-editor]
     * [htop](https://github.com/htop-dev/htop)
     * [Neofetch](https://github.com/dylanaraps/neofetch)
-    * [Calibre](https://calibre-ebook.com/)
-    * [Seahorse](https://gitlab.gnome.org/GNOME/seahorse) 
-    * [GtkHash](https://github.com/tristanheaven/gtkhash) 
+    * [PuTTY](https://www.puttygen.com/)
+    * [FileZilla](https://filezilla-project.org/)
     * [lm_sensors](https://github.com/tristanheaven/gtkhash)
+    * [GtkHash](https://github.com/tristanheaven/gtkhash) 
+    * [gnupg & Seahorse](https://gitlab.gnome.org/GNOME/seahorse) 
 
 #### Full Software
 The full option additionally installs the following packages:
 * **Full:**
+    * [Neovim](https://neovim.io/)
+    * [Google Chrome](https://www.google.com/chrome/)
+    * [Visual Studio Code](https://code.visualstudio.com/)
+    * [Spotify](https://www.spotify.com/)
+    * [Brave Browser](https://brave.com/)
+    * [Calibre](https://calibre-ebook.com/)
+    
+* **Other:**
     * [LAMP (Linux, Apache, MySQL, PHP)](https://www.apache.org/)
     * [Texmaker LaTeX IDE](https://www.xm1math.net/texmaker/)
     * [Spyder Scientific IDE for Python](https://github.com/spyder-ide/spyder)
@@ -88,6 +90,7 @@ The full option additionally installs the following packages:
     * [mujoco-py](https://github.com/openai/mujoco-py#install-mujoco)
     * [PatchELF (utility to modify the dynamic linker and RPATH of ELF executables)](https://nixos.org/patchelf.html)
     * [OpenGL API (libgl1-mesa-dev)](https://www.mesa3d.org/)
+    * [VLC](https://www.videolan.org/vlc/index.html)
 
 ### <a id="faq-uninstall">What software do I have the option to uninstall?</a>
 
