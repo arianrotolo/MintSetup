@@ -34,7 +34,7 @@ bash setup.sh -f
 
 ### <a id="faq-howitworks">How does it work?</a>
 
-The `commands.json` file acts a huge dictionary that maps the appropriate software to the appropriate commands to install them. The Python3 app runs the GUI and records your choices, then uses this dictionary to compile all the necessary commands you need into a Bash script called `your_setup.sh` in the /bin folder.
+The `commands.json` acts a huge dictionary that maps the software to the commands to install. The Python3 app runs the GUI and records your choices, then uses this dictionary to compile all the commands into a Bash script `your_setup.sh` in the /bin folder.
 
 ### <a id="faq-required">Is anything installed that I can't disable?</a>
 
