@@ -43,6 +43,8 @@ if [ $option == "normal" ]; then
     sudo apt install -y synaptic gdebi
     sudo apt install -y cmake
     sudo apt install -y tree
+    sudo apt install -y gparted
+    #sudo apt install -y grub2
     #sudo apt install -y alien
 
     # install python tools
