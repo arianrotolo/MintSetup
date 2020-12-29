@@ -54,6 +54,9 @@ The default option installs the following packages:
 *  **System Utilities:**
     * [CMake](https://cmake.org/)
     * [cURL](https://curl.haxx.se/)
+    * [OpenSSL](https://www.openssl.org/)
+    * [OpenSSH](https://www.openssh.com/)
+    * [7-Zip](https://www.7-zip.org/)
     
 *  **Default:**
     * [Python Tools]
