@@ -57,6 +57,8 @@ The default option installs the following packages:
     * [OpenSSL](https://www.openssl.org/)
     * [OpenSSH](https://www.openssh.com/)
     * [7-Zip](https://www.7-zip.org/)
+    * [Grub2](https://help.ubuntu.com/community/Grub2)
+    * [GParted](https://gparted.org/)
     
 *  **Default:**
     * [Python Tools](https://www.python.org/)
