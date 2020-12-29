@@ -51,10 +51,11 @@ alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | gr
 
 #### Default Software
 The default option installs the following packages:
+*  **System Utilities:**
+    * [CMake](https://cmake.org/)
+    * [cURL](https://curl.haxx.se/)
+    
 *  **Default:**
-    * [System Utilities]
-    ** [CMake](https://cmake.org/)
-    ** [cURL](https://curl.haxx.se/)
     * [Python Tools]
     * [Python Pip)](https://pypi.org/project/pip/)
     * [Pip Packages(Grip, Virtualenv, Numpy)](https://github.com/joeyespo/grip)
@@ -79,7 +80,7 @@ The full option additionally installs the following packages:
     * [Brave Browser](https://brave.com/)
     * [Calibre](https://calibre-ebook.com/)
     
-* **Other:**
+* **Extra:**
     * [LAMP (Linux, Apache, MySQL, PHP)](https://www.apache.org/)
     * [Texmaker LaTeX IDE](https://www.xm1math.net/texmaker/)
     * [Spyder Scientific IDE for Python](https://github.com/spyder-ide/spyder)
