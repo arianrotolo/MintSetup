@@ -64,7 +64,7 @@ The default option installs the following packages:
     * [Pip Packages(Grip, Virtualenv, Numpy)](https://github.com/joeyespo/grip)
     * [Uncomplicated Firewall o ufw(and enable it)](https://wiki.ubuntu.com/UncomplicatedFirewall)
     * [Git (and configuration)](https://git-scm.com/)
-    * [dconf-editor]
+    * [dconf-editor](https://gitlab.gnome.org/GNOME/dconf-editor)
     * [htop](https://github.com/htop-dev/htop)
     * [Neofetch](https://github.com/dylanaraps/neofetch)
     * [PuTTY](https://www.puttygen.com/)
