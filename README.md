@@ -59,8 +59,8 @@ The default option installs the following packages:
     * [7-Zip](https://www.7-zip.org/)
     
 *  **Default:**
-    * [Python Tools]
-    * [Python Pip)](https://pypi.org/project/pip/)
+    * [Python Tools](https://www.python.org/)
+    * [Python Pip](https://pypi.org/project/pip/)
     * [Pip Packages(Grip, Virtualenv, Numpy)](https://github.com/joeyespo/grip)
     * [Uncomplicated Firewall o ufw(and enable it)](https://wiki.ubuntu.com/UncomplicatedFirewall)
     * [Git (and configuration)](https://git-scm.com/)
