@@ -110,9 +110,13 @@ if [ $option == "full" ]; then
     
     echo "Iniciando instalacion de paquetes full..."
     
-    # install Oh My Zsh
+    # install Oh My Zsh and plugins (copiar .zshrc a /home)
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     sudo apt update -y
+    git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
     
     # install AMD drivers (OpenGL, Vulkan, Mesa)
     #sudo add-apt-repository ppa:oibaf/graphics-drivers
