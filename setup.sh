@@ -109,7 +109,11 @@ COMMENT
 if [ $option == "full" ]; then
     
     echo "Iniciando instalacion de paquetes full..."
-
+    
+    # install Oh My Zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sudo apt update -y
+    
     # install AMD drivers (OpenGL, Vulkan, Mesa)
     #sudo add-apt-repository ppa:oibaf/graphics-drivers
     sudo apt update -y
