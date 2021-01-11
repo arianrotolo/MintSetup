@@ -2,7 +2,7 @@
 
 option="normal";
 
-read -p "Enter the option (n:normal ; f:full ; e:extra): " option
+read -p "Enter the option (z:zsh ; n:normal ; f:full ; e:extra): " option
 
 if [[ $option == "f" ]] || [[ $option == "full" ]]; then
     option="full";
@@ -10,6 +10,9 @@ if [[ $option == "f" ]] || [[ $option == "full" ]]; then
 elif [[ $option == "e" ]] || [[ $option == "extra" ]]; then
     option="extra";
     echo "Extra packages selected."
+elif [[ $option == "z" ]] || [[ $option == "zsh" ]]; then
+    option="zsh";
+    echo "Oh My Zsh selected."
 else
     option="normal";
     echo "Normal installation will proceed by default."
@@ -110,14 +113,6 @@ if [ $option == "full" ]; then
     
     echo "Iniciando instalacion de paquetes full..."
     
-    # install Oh My Zsh and plugins (copiar .zshrc a /home)
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    sudo apt update -y
-    git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-    
     # install AMD drivers (OpenGL, Vulkan, Mesa)
     #sudo add-apt-repository ppa:oibaf/graphics-drivers
     sudo apt update -y
@@ -179,6 +174,22 @@ if [ $option == "extra" ]; then
     
     # Maven
     sudo apt install -y maven
+
+fi
+
+if [ $option == "zsh" ]; then
+
+    echo "Iniciando instalacion Oh My Zsh"
+
+    # install Oh My Zsh and plugins (copiar .zshrc a /home)
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    sudo apt update -y
+    
+    echo "Instalacion finalizada. El equipo se reiniciara para terminar con la correcta instalacion."
+    sudo reboot
 
 fi
 
