@@ -1,0 +1,25 @@
+build-essential
+software-properties-common
+curl
+apt-transport-https
+openssl libssl-dev
+openssh-server
+checkinstall
+p7zip unrar zip unzip
+synaptic gdebi
+cmake
+tree
+gparted
+ufw 
+gufw
+git
+dconf-editor
+neofetch
+htop
+putty
+putty-tools
+filezilla
+lm-sensors
+gtkhash
+gnupg
+seahorse

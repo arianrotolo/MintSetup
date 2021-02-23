@@ -1,113 +1,98 @@
 #!/usr/bin/env bash
 
 option="normal";
+update="no";
 
-read -p "Enter the option (z:zsh ; n:normal ; f:full ; e:extra): " option
+update () {
+    echo 'Initialize updating'
+    sudo apt full-upgrade -y
+    sudo apt update -y
+    sudo apt upgrade -y
+}
+
+read -p "Update packages (y:yes ; n:no): " update
+if [[ $update == "y" ]] || [[ $update == "yes" ]]; then
+    update
+fi
+
+echo $'\nOh My Zsh packages (z:zsh): '
+echo "Plugins."
+
+echo $'\nNormal packages (n:normal): '
+echo $'...\n'
+
+echo "Full packages (f:full): "
+echo "All packages."
+
+echo $'\nExtra packages (e:extra): '
+echo "LAMP (Linux, Apache, MySQL, PHP)."
+echo "Spyder IDE."
+echo "Texmaker LaTeX."
+echo "Java Kit: Maven and Gradle."
+
+echo $'\nPython packages (p:python): '
+echo $'Pip packages.\n'
+
+read -p "Enter option (normal by default): " option
 
 if [[ $option == "f" ]] || [[ $option == "full" ]]; then
     option="full";
-    echo "Full installation selected."
 elif [[ $option == "e" ]] || [[ $option == "extra" ]]; then
     option="extra";
-    echo "Extra packages selected."
 elif [[ $option == "z" ]] || [[ $option == "zsh" ]]; then
     option="zsh";
-    echo "Oh My Zsh selected."
+elif [[ $option == "p" ]] || [[ $option == "python" ]]; then
+    option="python";
 else
     option="normal";
-    echo "Normal installation will proceed by default."
 fi
 
 echo "Selected option for installation: $option!"
 
-# upstream-lsb gets ubuntu release codename
-alias upstream-lsb="grep DISTRIB_CODENAME /etc/upstream-release/lsb-release | grep -o --colour=never \"[a-z-]*$\""
+alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
 
-# updating
-sudo apt full-upgrade -y
-sudo apt update -y
-sudo apt upgrade -y
-
-if [ $option == "normal" ]; then
+if [ $option == "zsh" ]; then
+    echo "Iniciando instalacion Oh My Zsh"
 
     # install zsh shell
     sudo apt install -y zsh
     sudo chsh -s $(which zsh)
-
-    # install system utilities
-    sudo apt install -y build-essential
-    sudo apt install -y software-properties-common
-    sudo apt install -y curl
-    sudo apt install -y apt-transport-https
-    sudo apt install -y openssl libssl-dev
-    sudo apt install -y openssh-server
-    sudo apt install -y checkinstall
-    sudo apt install -y p7zip unrar zip unzip
-    sudo apt install -y synaptic gdebi
-    sudo apt install -y cmake
-    sudo apt install -y tree
-    sudo apt install -y gparted
-    #sudo apt install -y grub2
-    #sudo apt install -y alien
-
-    # install python tools
-    sudo apt install -y python3 python-dev python3-dev 
-    sudo apt install -y python3-setuptools python3-distutils python3-pyqt5
-    sudo apt install -y libffi-dev libxml2-dev libxslt1-dev zlib1g-dev      #librerias necesarias para compilar ultimo Python
-    sudo apt install -y python3-tk python-pytest 
-    sudo apt install -y python3-matplotlib
-
-    # install pip
-    sudo apt install -y python3-pip
-    sudo pip install --upgrade pip
-
-    # install pip packages
-    sudo pip install setuptools wheel
-    sudo pip install virtualenv 
-    sudo pip install grip
-    sudo pip install numpy
-
-    # install firewall
-    sudo apt install -y ufw gufw
-    sudo ufw enable
-
-    # install git
-    sudo apt install -y git
-    git config --global user.name "kilianpolkov"
-    git config --global user.email "kilianpolkov@gmail.com"
-    git config --global credential.helper 'cache --timeout=3600'
-
-    # install dconf-editor
-    sudo apt install -y dconf-editor
-
-    # install neofetch
-    sudo apt install -y neofetch
-
-    # install htop
-    sudo apt install -y htop
-
-    # install putty
-    sudo apt install -y putty
-    sudo apt install -y putty-tools
-
-    # install filezilla
-    sudo apt install -y filezilla
-
-    # install lm-sensors
-    sudo apt install -y lm-sensors
-
-    # install gtkhash
-    sudo apt install -y gtkhash
-
-    # install seahorse passwords
-    sudo apt install -y gnupg
-    sudo apt install -y seahorse
-
+    
+    # install Oh My Zsh (copiar .zshrc a /home)
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    
+    # install theme
+    git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
+    
+    # install plugins
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    
+    sudo apt update -y
+    echo "Instalacion finalizada. El equipo se reiniciara para terminar con la correcta instalacion."
+    sudo reboot
 fi
 
-<<'COMMENT'
- HOLA
-COMMENT
+if [ $option == "normal" ]; then
+    xargs -a ./packages/normal.txt sudo apt-get install
+    echo 'Enable firewall'
+    sudo ufw enable
+fi
+
+if [ $option == "extra" ]; then
+    echo "Iniciando instalacion de paquetes extra..."
+    xargs -a ./packages/extra.txt sudo apt-get install
+fi
+
+if [ $option == "python" ]; then
+    echo "Iniciando instalacion de paquetes Python..."
+    xargs -a ./packages/python.txt sudo apt-get install
+    pip3 --version
+    sudo pip3 install --upgrade pip
+    echo "Iniciando instalacion de paquetes pip..."
+    xargs -a ./packages/pip.txt sudo pip install
+fi
 
 if [ $option == "full" ]; then
     
@@ -156,56 +141,15 @@ if [ $option == "full" ]; then
     
 fi
 
-if [ $option == "extra" ]; then
+<<'COMMENT'
+    Esto es un comentario multilinea
+COMMENT
 
-    echo "Iniciando instalacion de paquetes extra..."
-
-    # LAMP (Linux, Apache, MySQL, PHP)
-    #sudo apt install apache2 php libapache2-mod-php phpmyadmin php-mysql mysql-server
-    
-    # install Spyder IDE for scientifics
-    #sudo apt install -y spyder spyder3
-    
-    # Texmaker LaTeX editor
-    sudo apt install -y texmaker 
-
-    # Gradle
-    sudo apt install -y gradle
-    
-    # Maven
-    sudo apt install -y maven
-
-fi
-
-if [ $option == "zsh" ]; then
-
-    echo "Iniciando instalacion Oh My Zsh"
-
-    # install Oh My Zsh (copiar .zshrc a /home)
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    
-    # install theme
-    git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
-    
-    # install plugins
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    
-    sudo apt update -y
-    echo "Instalacion finalizada. El equipo se reiniciara para terminar con la correcta instalacion."
-    sudo reboot
-
-fi
-
-#updating
-sudo apt full-upgrade -y
-sudo apt update -y
-sudo apt upgrade -y
+update
 
 #unistalling
 echo "Iniciando desinstalacion paquetes..."
-sudo apt purge -y hexchat
+#sudo apt purge -y hexchat
 #sudo apt purge -y rhythmbox
 
 #cleaning
@@ -215,8 +159,6 @@ sudo apt clean -y all
 rm -rf ~/.cache/thumbnails/*
 sudo du -sh /var/cache/apt
 
-#updating
-sudo apt update -y
-sudo apt upgrade -y
+update
 
 echo $'\n'"*** Finalizado. Reinicia el sistema! ***"

@@ -1,0 +1,4 @@
+setuptools wheel
+virtualenv 
+grip
+numpy
