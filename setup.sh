@@ -2,12 +2,21 @@
 
 option="normal";
 update="no";
+reboot="no";
 
 update () {
     echo 'Initialize updating'
     sudo apt full-upgrade -y
     sudo apt update -y
     sudo apt upgrade -y
+}
+
+askReboot () {
+    read -p "Reboot system? (y:yes; n:no): " reboot
+    if [[ $reboot == "y" ]] || [[ $reboot == "yes" ]]; then
+        echo "El equipo se reiniciara para finalizar la instalacion."
+        sudo reboot
+    fi
 }
 
 read -p "Update packages (y:yes ; n:no): " update
@@ -52,24 +61,30 @@ echo "Selected option for installation: $option!"
 alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
 
 if [ $option == "zsh" ]; then
-    echo "Install zsh shell"
-    sudo apt install -y zsh
-    sudo chsh -s $(which zsh)
+    echo "Iniciando instalacion Oh My Zsh"
 
-    echo "install Oh My Zsh (copiar .zshrc a /home)"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    
-    echo "install theme"
-    git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
-    
-    echo "install plugins"
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    
+    read -p "Install zsh first time? (y:yes; n:no): " option
+
+    if [[ $option == "y" ]] || [[ $option == "yes" ]]; then
+        echo "Install zsh shell"
+        sudo apt install -y zsh
+        sudo chsh -s $(which zsh)
+        
+        echo "install Oh My Zsh (copiar .zshrc a /home con stow)"
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"        
+    else
+        echo "install theme"
+        git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+        ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
+        
+        echo "install plugins"
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    fi
+
     update
-    echo "El equipo se reiniciara para finalizar la instalacion."
-    sudo reboot
+    
+    askReboot
 fi
 
 if [ $option == "normal" ]; then
@@ -159,4 +174,4 @@ sudo du -sh /var/cache/apt
 
 update
 
-echo $'\n'"*** Finalizado. Reinicia el sistema! ***"
+askReboot
