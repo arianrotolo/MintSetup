@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# TODO: npm packages, check normal packages
 
 option="normal";
 update="no";
@@ -9,6 +10,20 @@ update () {
     sudo apt full-upgrade -y
     sudo apt update -y
     sudo apt upgrade -y
+}
+
+uninstall () {
+    echo "Iniciando desinstalacion paquetes..."
+    sudo apt purge -y hexchat
+    sudo apt purge -y rhythmbox
+}
+
+clean () {
+    echo "Iniciando limpieza de basura..."
+    sudo apt autoremove -y
+    sudo apt clean -y all
+    rm -rf ~/.cache/thumbnails/*
+    sudo du -sh /var/cache/apt
 }
 
 askReboot () {
@@ -24,37 +39,45 @@ if [[ $update == "y" ]] || [[ $update == "yes" ]]; then
     update
 fi
 
-echo $'\nOh My Zsh packages (z:zsh): '
-echo "Plugins."
+printOptions () {
+    echo $'\nOh My Zsh packages (z:zsh): '
+    echo "Plugins."
 
-echo $'\nNormal packages (n:normal): '
-echo $'...\n'
+    echo $'\nNormal packages (n:normal): '
+    echo $'...\n'
 
-echo "Full packages (f:full): "
-echo "All packages."
+    echo "Full packages (f:full): "
+    echo "All packages."
 
-echo $'\nExtra packages (e:extra): '
-echo "LAMP (Linux, Apache, MySQL, PHP)."
-echo "Spyder IDE."
-echo "Texmaker LaTeX."
-echo "Java Kit: Maven and Gradle."
+    echo $'\nExtra packages (e:extra): '
+    echo "LAMP (Linux, Apache, MySQL, PHP)."
+    echo "Spyder IDE."
+    echo "Texmaker LaTeX."
+    echo "Java Kit: Maven and Gradle."
 
-echo $'\nPython packages (p:python): '
-echo $'Pip packages.\n'
+    echo $'\nPython packages (p:python): '
+    echo $'Pip packages.\n'
+}
+
+checkOptions () {
+    if [[ $option == "f" ]] || [[ $option == "full" ]]; then
+        option="full";
+    elif [[ $option == "e" ]] || [[ $option == "extra" ]]; then
+        option="extra";
+    elif [[ $option == "z" ]] || [[ $option == "zsh" ]]; then
+        option="zsh";
+    elif [[ $option == "p" ]] || [[ $option == "python" ]]; then
+        option="python";
+    else
+        option="normal";
+    fi
+}
+
+printOptions
 
 read -p "Enter option (normal by default): " option
 
-if [[ $option == "f" ]] || [[ $option == "full" ]]; then
-    option="full";
-elif [[ $option == "e" ]] || [[ $option == "extra" ]]; then
-    option="extra";
-elif [[ $option == "z" ]] || [[ $option == "zsh" ]]; then
-    option="zsh";
-elif [[ $option == "p" ]] || [[ $option == "python" ]]; then
-    option="python";
-else
-    option="normal";
-fi
+checkOptions
 
 echo "Selected option for installation: $option!"
 
@@ -160,17 +183,9 @@ COMMENT
 
 update
 
-#unistalling
-echo "Iniciando desinstalacion paquetes..."
-#sudo apt purge -y hexchat
-#sudo apt purge -y rhythmbox
+#uninstall
 
-#cleaning
-echo "Iniciando limpieza de basura..."
-sudo apt autoremove -y
-sudo apt clean -y all
-rm -rf ~/.cache/thumbnails/*
-sudo du -sh /var/cache/apt
+clean
 
 update
 
