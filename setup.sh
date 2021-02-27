@@ -1,30 +1,40 @@
 #!/usr/bin/env bash
 # TODO: npm packages, check normal packages
 
+<<'COMMENT'
+    Esto es un comentario multilinea
+COMMENT
+
 option="normal";
 update="no";
 reboot="no";
 package="n"
 
 isInstalled() {
-    dpkg-query -Wf'${db:Status-abbrev}' $package 2>/dev/null | grep -q '^i'
+    dpkg-query -Wf'${db:Status-abbrev}' $1 2>/dev/null | grep -q '^i'
 }
 
 checkPackage() {
-    local package=""
-    read -p "Check installed package: " package
-    if isInstalled $package; then
-        printf 'Yes, the package %s is installed!\n' "$package"
+    if isInstalled $1; then
+        printf 'Yes, the package %s is installed!\n' "$1"
     else
-        printf 'Package %s is not currently installed.\n' "$package"
+        printf 'No, the package %s is not installed!\n' "$1"
     fi
 }
 
-update () {
-    echo 'Initialize updating'
-    sudo apt full-upgrade -y
-    sudo apt update -y
-    sudo apt upgrade -y
+discoverFile () {
+    while read line || [ -n "$line" ]; do
+        checkPackage "$line"
+    done < $1
+}
+
+askUpdate () {
+    read -p "Update packages? (y/N): " update
+    if [[ $update == "y" ]] || [[ $update == "yes" ]]; then
+        sudo apt full-upgrade -y
+        sudo apt update -y
+        sudo apt upgrade -y
+    fi
 }
 
 uninstall () {
@@ -42,36 +52,19 @@ clean () {
 }
 
 askReboot () {
-    read -p "Reboot system? (y:yes; n:no): " reboot
+    read -p "Reboot system? (y/N): " reboot
     if [[ $reboot == "y" ]] || [[ $reboot == "yes" ]]; then
         echo "El equipo se reiniciara para finalizar la instalacion."
         sudo reboot
     fi
 }
 
-read -p "Update packages (y:yes ; n:no): " update
-if [[ $update == "y" ]] || [[ $update == "yes" ]]; then
-    update
-fi
-
 printOptions () {
-    echo $'\nOh My Zsh packages (z:zsh): '
-    echo "Plugins."
-
-    echo $'\nNormal packages (n:normal): '
-    echo $'...\n'
-
-    echo "Full packages (f:full): "
-    echo "All packages."
-
-    echo $'\nExtra packages (e:extra): '
-    echo "LAMP (Linux, Apache, MySQL, PHP)."
-    echo "Spyder IDE."
-    echo "Texmaker LaTeX."
-    echo "Java Kit: Maven and Gradle."
-
-    echo $'\nPython packages (p:python): '
-    echo $'Pip packages.\n'
+    echo 'Oh My Zsh packages [z:zsh]: '
+    echo 'Normal packages [n:normal]: '
+    echo "All packages [f:full]: "
+    echo 'Extra: LAMP, Spyder, Textmaker and JavaKit (Maven and Gradle) [e:extra]: '
+    echo 'Python and pip packages [p:python]: '
 }
 
 checkOptions () {
@@ -88,67 +81,7 @@ checkOptions () {
     fi
 }
 
-printOptions
-
-read -p "Enter option (normal by default): " option
-
-checkOptions
-
-echo "Selected option for installation: $option!"
-
-alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
-
-if [ $option == "zsh" ]; then
-    echo "Iniciando instalacion Oh My Zsh"
-
-    read -p "Install zsh first time? (y:yes; n:no): " option
-
-    if [[ $option == "y" ]] || [[ $option == "yes" ]]; then
-        echo "Install zsh shell"
-        sudo apt install -y zsh
-        sudo chsh -s $(which zsh)
-        
-        echo "install Oh My Zsh (copiar .zshrc a /home con stow)"
-        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"        
-    else
-        echo "install theme"
-        git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-        ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
-        
-        echo "install plugins"
-        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    fi
-
-    update
-    
-    askReboot
-fi
-
-if [ $option == "normal" ]; then
-    xargs -a ./packages/normal.txt sudo apt-get install
-    echo 'Enable firewall'
-    sudo ufw enable
-fi
-
-if [ $option == "extra" ]; then
-    echo "Iniciando instalacion de paquetes extra..."
-    xargs -a ./packages/extra.txt sudo apt-get install
-fi
-
-if [ $option == "python" ]; then
-    echo "Iniciando instalacion de paquetes Python..."
-    xargs -a ./packages/python.txt sudo apt-get install
-    pip3 --version
-    sudo pip3 install --upgrade pip
-    echo "Iniciando instalacion de paquetes pip..."
-    xargs -a ./packages/pip.txt sudo pip install
-fi
-
-if [ $option == "full" ]; then
-    
-    echo "Iniciando instalacion de paquetes full..."
-    
+installFull () {
     # install AMD drivers (OpenGL, Vulkan, Mesa)
     #sudo add-apt-repository ppa:oibaf/graphics-drivers
     sudo apt update -y
@@ -189,21 +122,65 @@ if [ $option == "full" ]; then
     echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
     sudo apt update -y
     sudo apt install brave-browser
+}
+
+installZsh () {
+    read -p "Install zsh first time? (y/N): " option
+
+    if [[ $option == "y" ]] || [[ $option == "yes" ]]; then
+        echo "Install zsh shell"
+        sudo apt install -y zsh
+        sudo chsh -s $(which zsh)
+        
+        echo "install Oh My Zsh (copiar .zshrc a /home con stow)"
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"        
+    else
+        echo "install theme"
+        git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+        ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
+        
+        echo "install plugins"
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    fi
+}
+
+# Main
+
+printOptions
+read -p "Enter option (normal by default): " option
+checkOptions
+echo "Selected option for installation: $option!"
+alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
+
+if [ $option == "zsh" ]; then
+    echo "Iniciando instalacion Oh My Zsh"
+    installZsh
+    askUpdate
+    askReboot
+elif [ $option == "normal" ]; then
+    xargs -a ./packages/normal.txt sudo apt-get install
+    echo 'Enable firewall'
+    sudo ufw enable
+elif [ $option == "extra" ]; then
+    echo "Iniciando instalacion de paquetes extra..."
+    xargs -a ./packages/extra.txt sudo apt-get install
+elif [ $option == "python" ]; then
+    echo "Iniciando instalacion de paquetes Python..."
+    xargs -a ./packages/python.txt sudo apt-get install
+    pip3 --version
+    sudo pip3 install --upgrade pip
+    echo "Iniciando instalacion de paquetes pip..."
+    xargs -a ./packages/pip.txt sudo pip install
+elif [ $option == "full" ]; then
     
+    echo "Iniciando instalacion de paquetes full..."
+    discoverFile "./packages/full.txt"
+    #installFull
 fi
 
-checkPackage
-
-<<'COMMENT'
-    Esto es un comentario multilinea
-COMMENT
-
-update
-
+askUpdate
 #uninstall
-
 clean
-
-update
-
+askUpdate
 askReboot
