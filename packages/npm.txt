@@ -1,2 +1,3 @@
-netlify-cli
+npm-check-updates
 yarn
+netlify-cli
