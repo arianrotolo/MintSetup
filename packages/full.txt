@@ -1,0 +1,5 @@
+neovim
+google-chrome-stable
+code
+spotify-client
+brave-browser
