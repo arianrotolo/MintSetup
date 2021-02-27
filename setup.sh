@@ -3,6 +3,21 @@
 option="normal";
 update="no";
 reboot="no";
+package="n"
+
+isInstalled() {
+    dpkg-query -Wf'${db:Status-abbrev}' $package 2>/dev/null | grep -q '^i'
+}
+
+checkPackage() {
+    local package=""
+    read -p "Check installed package: " package
+    if isInstalled $package; then
+        printf 'Yes, the package %s is installed!\n' "$package"
+    else
+        printf 'Package %s is not currently installed.\n' "$package"
+    fi
+}
 
 update () {
     echo 'Initialize updating'
@@ -153,6 +168,8 @@ if [ $option == "full" ]; then
     sudo apt install brave-browser
     
 fi
+
+checkPackage
 
 <<'COMMENT'
     Esto es un comentario multilinea
