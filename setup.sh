@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TODO: npm packages, check normal packages
+# Change checkOptions is redundant
 
 <<'COMMENT'
     Esto es un comentario multilinea
@@ -76,6 +76,8 @@ checkOptions () {
         option="zsh";
     elif [[ $option == "p" ]] || [[ $option == "python" ]]; then
         option="python";
+    elif [[ $option == "npm" ]]; then
+        option="npm";
     else
         option="normal";
     fi
@@ -145,6 +147,10 @@ installZsh () {
     fi
 }
 
+installNpm () {
+    xargs -a ./packages/npm.txt npm -g install
+}
+
 # Main
 
 printOptions
@@ -177,6 +183,9 @@ elif [ $option == "full" ]; then
     echo "Iniciando instalacion de paquetes full..."
     discoverFile "./packages/full.txt"
     #installFull
+elif [ $option == "npm" ]; then
+    
+    installNpm
 fi
 
 askUpdate
