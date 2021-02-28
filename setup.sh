@@ -31,7 +31,6 @@ discoverFile () {
 askUpdate () {
     read -p "Update packages? (y/N): " update
     if [[ $update == "y" ]] || [[ $update == "yes" ]]; then
-        sudo apt full-upgrade -y
         sudo apt update -y
         sudo apt upgrade -y
     fi
@@ -49,6 +48,7 @@ clean () {
     sudo apt clean -y all
     rm -rf ~/.cache/thumbnails/*
     sudo du -sh /var/cache/apt
+    sudo apt full-upgrade -y
 }
 
 askReboot () {
@@ -165,15 +165,15 @@ if [ $option == "zsh" ]; then
     askUpdate
     askReboot
 elif [ $option == "normal" ]; then
-    xargs -a ./packages/normal.txt sudo apt-get install
+    xargs -a ./packages/normal.txt sudo apt install
     echo 'Enable firewall'
     sudo ufw enable
 elif [ $option == "extra" ]; then
     echo "Iniciando instalacion de paquetes extra..."
-    xargs -a ./packages/extra.txt sudo apt-get install
+    xargs -a ./packages/extra.txt sudo apt install
 elif [ $option == "python" ]; then
     echo "Iniciando instalacion de paquetes Python..."
-    xargs -a ./packages/python.txt sudo apt-get install
+    xargs -a ./packages/python.txt sudo apt install
     pip3 --version
     sudo pip3 install --upgrade pip
     echo "Iniciando instalacion de paquetes pip..."
