@@ -2,3 +2,4 @@ npm
 npm-check-updates
 yarn
 netlify-cli
+tldr
