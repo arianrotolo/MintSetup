@@ -14,18 +14,35 @@ isInstalled() {
     dpkg-query -Wf'${db:Status-abbrev}' $1 2>/dev/null | grep -q '^i'
 }
 
+installPackage () {
+    declare -A command
+    command[calibre]="sudo apt update; calibre"
+    command[google-chrome-stable]="sudo apt update; apt install google-chrome-stable"
+    command[code]="sudo apt update; apt install code"
+    command[spotify-client]="sudo apt update; apt install spotify-client"
+    command[brave-browser]="sudo apt update; apt install brave-browser"
+    command[geogebra-classic]="sudo apt update; apt install geogebra-classic"
+    eval ${command[$1]}
+}
+
 checkPackage() {
     if isInstalled $1; then
         printf 'Yes, the package %s is installed!\n' "$1"
     else
         printf 'No, the package %s is not installed!\n' "$1"
+        read -p "Install package? (y/N): " option
+        if [[ $option == "y" ]]; then
+            installPackage $1
+        fi
     fi
 }
 
 discoverFile () {
-    while read line || [ -n "$line" ]; do
-        checkPackage "$line"
-    done < $1
+    while IFS= read -r -u 3 line || [ -n "$line" ]; do #read last line if not empty
+        if [ -n "${line}" ]; then
+            checkPackage $line
+        fi
+    done 3< $1 #file descriptor
 }
 
 askUpdate () {
@@ -182,7 +199,6 @@ elif [ $option == "full" ]; then
     
     echo "Iniciando instalacion de paquetes full..."
     discoverFile "./packages/full.txt"
-    #installFull
 elif [ $option == "npm" ]; then
     
     installNpm
