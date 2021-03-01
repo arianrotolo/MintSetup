@@ -1,0 +1,6 @@
+calibre=sudo apt update; calibre
+google-chrome-stable=sudo apt update; apt install google-chrome-stable
+code=sudo apt update; apt install code
+spotify-client=sudo apt update; apt install spotify-client
+brave-browser=sudo apt update; apt install brave-browser
+geogebra-classic=sudo apt update; apt install geogebra-classic

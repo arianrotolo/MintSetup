@@ -5,6 +5,8 @@
     Esto es un comentario multilinea
 COMMENT
 
+declare -A dictionary
+
 option="normal";
 update="no";
 reboot="no";
@@ -15,14 +17,7 @@ isInstalled() {
 }
 
 installPackage () {
-    declare -A command
-    command[calibre]="sudo apt update; calibre"
-    command[google-chrome-stable]="sudo apt update; apt install google-chrome-stable"
-    command[code]="sudo apt update; apt install code"
-    command[spotify-client]="sudo apt update; apt install spotify-client"
-    command[brave-browser]="sudo apt update; apt install brave-browser"
-    command[geogebra-classic]="sudo apt update; apt install geogebra-classic"
-    eval ${command[$1]}
+    eval ${dictionary[$1]}
 }
 
 checkPackage() {
@@ -35,6 +30,14 @@ checkPackage() {
             installPackage $1
         fi
     fi
+}
+
+getDictionary () {
+    while IFS='=' read -r -u 3 key value || [ -n "$key" ]; do #read last line if not empty
+        if [ -n "${key}" ]; then
+            dictionary[$key]=$value
+        fi
+    done 3< $1 #file descriptor
 }
 
 discoverFile () {
@@ -198,6 +201,7 @@ elif [ $option == "python" ]; then
 elif [ $option == "full" ]; then
     
     echo "Iniciando instalacion de paquetes full..."
+    getDictionary "./packages/dictionary.txt"
     discoverFile "./packages/full.txt"
 elif [ $option == "npm" ]; then
     
