@@ -40,7 +40,7 @@ getDictionary () {
     done 3< $1 #file descriptor
 }
 
-discoverFile () {
+readPackages () {
     while IFS= read -r -u 3 line || [ -n "$line" ]; do #read last line if not empty
         if [ -n "${line}" ]; then
             checkPackage $line
@@ -202,7 +202,7 @@ elif [ $option == "full" ]; then
     
     echo "Iniciando instalacion de paquetes full..."
     getDictionary "./packages/dictionary.txt"
-    discoverFile "./packages/full.txt"
+    readPackages "./packages/full.txt"
 elif [ $option == "npm" ]; then
     
     installNpm
