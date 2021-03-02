@@ -57,6 +57,7 @@ askUpdate () {
 }
 
 uninstall () {
+    echo 'test'
     #sudo apt purge -y hexchat
     #sudo apt purge -y rhythmbox
 }
@@ -83,11 +84,13 @@ askReboot () {
 }
 
 printOptions () {
-    echo 'Oh My Zsh packages [z:zsh]: '
-    echo 'Normal packages [n:normal]: '
-    echo "All packages [f:full]: "
-    echo 'Extra: LAMP, Spyder, Textmaker and JavaKit (Maven and Gradle) [e:extra]: '
-    echo 'Python and pip packages [p:python]: '
+    echo '-----OPTIONS-----'
+    echo '[z:zsh] packages'
+    echo '[n:normal] packages'
+    echo '[f:full] packages'
+    echo '[e:extra] packages: LAMP, Spyder, Textmaker and JavaKit (Maven and Gradle)'
+    echo '[p:python] and pip packages: '
+    echo
 }
 
 installFull () {
@@ -164,7 +167,7 @@ checkOptions () {
 
 # Main
 printOptions
-read -p "Enter option (normal by default): " option
+read -p "Enter option (normal): " option
 checkOptions
 askUpdate
 askClean
