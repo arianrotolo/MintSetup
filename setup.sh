@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# Change checkOptions is redundant
+# TODO: 
 
 <<'COMMENT'
     Esto es un comentario multilinea
 COMMENT
 
 declare -A dictionary
-
 option="normal";
 update="no";
 reboot="no";
 package="n"
+alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
 
 isInstalled() {
     dpkg-query -Wf'${db:Status-abbrev}' $1 2>/dev/null | grep -q '^i'
@@ -57,9 +57,8 @@ askUpdate () {
 }
 
 uninstall () {
-    echo "Iniciando desinstalacion paquetes..."
-    sudo apt purge -y hexchat
-    sudo apt purge -y rhythmbox
+    #sudo apt purge -y hexchat
+    #sudo apt purge -y rhythmbox
 }
 
 askClean () {
@@ -70,7 +69,8 @@ askClean () {
         sudo apt clean -y all
         rm -rf ~/.cache/thumbnails/*
         sudo du -sh /var/cache/apt
-        sudo apt full-upgrade -y
+        sudo apt upgrade -y
+        #sudo apt full-upgrade -y
     fi
 }
 
@@ -90,22 +90,6 @@ printOptions () {
     echo 'Python and pip packages [p:python]: '
 }
 
-checkOptions () {
-    if [[ $option == "f" ]] || [[ $option == "full" ]]; then
-        option="full";
-    elif [[ $option == "e" ]] || [[ $option == "extra" ]]; then
-        option="extra";
-    elif [[ $option == "z" ]] || [[ $option == "zsh" ]]; then
-        option="zsh";
-    elif [[ $option == "p" ]] || [[ $option == "python" ]]; then
-        option="python";
-    elif [[ $option == "npm" ]]; then
-        option="npm";
-    else
-        option="normal";
-    fi
-}
-
 installFull () {
     # install AMD drivers (OpenGL, Vulkan, Mesa)
     #sudo add-apt-repository ppa:oibaf/graphics-drivers
@@ -113,40 +97,14 @@ installFull () {
     sudo apt upgrade -y
     sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils 
     sudo apt install -y libosmesa6-dev libgl1-mesa-dev libopenmpi-dev patchelf 
-
     # install Neovim
-    #sudo add-apt-repository ppa:neovim-ppa/stable
-    sudo apt update -y
-    sudo apt install -y neovim
-    
     # install Calibre
     sudo apt update -y
     sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
-
     # install Chrome
-    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-    sudo apt update -y
-    sudo apt install -y google-chrome-stable
-    
     # install VSCode
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-    sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-    sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-    sudo apt update -y
-    sudo apt install -y code
-
     # install Spotify
-    curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
-    echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-    sudo apt update -y
-    sudo apt install -y spotify-client
-    
     # install Brave
-    curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-    echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-    sudo apt update -y
-    sudo apt install brave-browser
 }
 
 installZsh () {
@@ -174,45 +132,40 @@ installNpm () {
     xargs -a ./packages/npm.txt npm -g install
 }
 
-# Main
+checkOptions () {
+    if [[ $option == "z" ]] || [[ $option == "zsh" ]]; then
+        echo "Iniciando instalacion Oh My Zsh"
+        installZsh
+    elif [[ $option == "n" ]] || [[ $option == "normal" ]]; then
+        xargs -a ./packages/normal.txt sudo apt install
+        echo 'Enable firewall'
+        sudo ufw enable
+    elif [[ $option == "e" ]] || [[ $option == "extra" ]]; then
+        echo "Iniciando instalacion de paquetes extra..."
+        xargs -a ./packages/extra.txt sudo apt install
+    elif [[ $option == "p" ]] || [[ $option == "python" ]]; then
+        echo "Iniciando instalacion de paquetes Python..."
+        xargs -a ./packages/python.txt sudo apt install
+        pip3 --version
+        sudo pip3 install --upgrade pip
+        echo "Iniciando instalacion de paquetes pip..."
+        xargs -a ./packages/pip.txt sudo pip install
+    elif [[ $option == "f" ]] || [[ $option == "full" ]]; then
+        echo "Iniciando instalacion de paquetes full..."
+        getDictionary "./packages/dictionary.txt"
+        readPackages "./packages/full.txt"
+    elif [[ $option == "n" ]] || [[ $option == "npm" ]]; then
+        installNpm
+    elif [[ $option == "u" ]] || [[ $option == "uninstall" ]]; then
+        echo "Iniciando desinstalacion paquetes..."
+        uninstall
+    fi
+}
 
+# Main
 printOptions
 read -p "Enter option (normal by default): " option
 checkOptions
-echo "Selected option for installation: $option!"
-alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
-
-if [ $option == "zsh" ]; then
-    echo "Iniciando instalacion Oh My Zsh"
-    installZsh
-    askUpdate
-    askReboot
-elif [ $option == "normal" ]; then
-    xargs -a ./packages/normal.txt sudo apt install
-    echo 'Enable firewall'
-    sudo ufw enable
-elif [ $option == "extra" ]; then
-    echo "Iniciando instalacion de paquetes extra..."
-    xargs -a ./packages/extra.txt sudo apt install
-elif [ $option == "python" ]; then
-    echo "Iniciando instalacion de paquetes Python..."
-    xargs -a ./packages/python.txt sudo apt install
-    pip3 --version
-    sudo pip3 install --upgrade pip
-    echo "Iniciando instalacion de paquetes pip..."
-    xargs -a ./packages/pip.txt sudo pip install
-elif [ $option == "full" ]; then
-    
-    echo "Iniciando instalacion de paquetes full..."
-    getDictionary "./packages/dictionary.txt"
-    readPackages "./packages/full.txt"
-elif [ $option == "npm" ]; then
-    
-    installNpm
-fi
-
 askUpdate
-#uninstall
 askClean
-askUpdate
 askReboot
