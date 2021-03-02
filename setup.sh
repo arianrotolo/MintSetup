@@ -62,13 +62,16 @@ uninstall () {
     sudo apt purge -y rhythmbox
 }
 
-clean () {
-    echo "Iniciando limpieza de basura..."
-    sudo apt autoremove -y
-    sudo apt clean -y all
-    rm -rf ~/.cache/thumbnails/*
-    sudo du -sh /var/cache/apt
-    sudo apt full-upgrade -y
+askClean () {
+    read -p "Clean? (y/N): " option
+    if [[ $option == "y" ]] || [[ $option == "yes" ]]; then
+        echo "Iniciando limpieza de basura..."
+        sudo apt autoremove -y
+        sudo apt clean -y all
+        rm -rf ~/.cache/thumbnails/*
+        sudo du -sh /var/cache/apt
+        sudo apt full-upgrade -y
+    fi
 }
 
 askReboot () {
@@ -210,6 +213,6 @@ fi
 
 askUpdate
 #uninstall
-clean
+askClean
 askUpdate
 askReboot
