@@ -5,3 +5,4 @@ code
 spotify-client
 brave-browser
 geogebra-classic
+copyq
