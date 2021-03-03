@@ -102,7 +102,4 @@ The full option additionally installs the following packages:
 
 You also have the option to remove some of the pre-installed software:
 * [Hexchat](https://hexchat.github.io/)
-* [Mopidy](https://www.mopidy.com/)
-* [Pidgin](https://pidgin.im/)
 * [Rhythmbox](https://wiki.gnome.org/Apps/Rhythmbox)
-* [Xplayer](https://github.com/linuxmint/xplayer)
