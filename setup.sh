@@ -82,8 +82,10 @@ printOptions () {
     echo '[z:zsh] packages'
     echo '[n:normal] packages'
     echo '[f:full] packages'
-    echo '[e:extra] packages: LAMP, Spyder, Textmaker and JavaKit (Maven and Gradle)'
-    echo '[p:python] and pip packages: '
+    echo '[e:extra] packages'
+    echo '[p:python] and pip packages'
+    echo '[u:uninstall] packages'
+    echo '[d:dotfiles] files'
     echo
 }
 
@@ -140,7 +142,6 @@ checkOptions () {
         uninstall
     elif [[ $option == "d" ]] || [[ $option == "dotfiles" ]]; then
         echo "Iniciando instalacion dotfiles..."
-        uninstall
     fi
 }
 
