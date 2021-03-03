@@ -13,7 +13,8 @@ package="n"
 alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
 
 isInstalled() {
-    dpkg-query -Wf'${db:Status-abbrev}' $1 2>/dev/null | grep -q '^i'
+    #dpkg-query -Wf'${db:Status-abbrev}' $1 2>/dev/null | grep -q '^i'
+    which $1 > /dev/null 
 }
 
 installPackage () {
@@ -36,14 +37,7 @@ getDictionary () {
     while IFS='=' read -r -u 3 key value || [ -n "$key" ]; do #read last line if not empty
         if [ -n "${key}" ]; then
             dictionary[$key]=$value
-        fi
-    done 3< $1 #file descriptor
-}
-
-readPackages () {
-    while IFS= read -r -u 3 line || [ -n "$line" ]; do #read last line if not empty
-        if [ -n "${line}" ]; then
-            checkPackage $line
+            checkPackage $key
         fi
     done 3< $1 #file descriptor
 }
@@ -100,14 +94,6 @@ installFull () {
     sudo apt upgrade -y
     sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils 
     sudo apt install -y libosmesa6-dev libgl1-mesa-dev libopenmpi-dev patchelf 
-    # install Neovim
-    # install Calibre
-    sudo apt update -y
-    sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
-    # install Chrome
-    # install VSCode
-    # install Spotify
-    # install Brave
 }
 
 installZsh () {
@@ -155,8 +141,7 @@ checkOptions () {
         xargs -a ./packages/pip.txt sudo pip install
     elif [[ $option == "f" ]] || [[ $option == "full" ]]; then
         echo "Iniciando instalacion de paquetes full..."
-        getDictionary "./packages/dictionary.txt"
-        readPackages "./packages/full.txt"
+        getDictionary "./packages/full.txt"
     elif [[ $option == "n" ]] || [[ $option == "npm" ]]; then
         installNpm
     elif [[ $option == "u" ]] || [[ $option == "uninstall" ]]; then
