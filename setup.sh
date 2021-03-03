@@ -87,15 +87,6 @@ printOptions () {
     echo
 }
 
-installFull () {
-    # install AMD drivers (OpenGL, Vulkan, Mesa)
-    #sudo add-apt-repository ppa:oibaf/graphics-drivers
-    sudo apt update -y
-    sudo apt upgrade -y
-    sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils 
-    sudo apt install -y libosmesa6-dev libgl1-mesa-dev libopenmpi-dev patchelf 
-}
-
 installZsh () {
     read -p "Install zsh first time? (y/N): " option
 
@@ -146,6 +137,9 @@ checkOptions () {
         installNpm
     elif [[ $option == "u" ]] || [[ $option == "uninstall" ]]; then
         echo "Iniciando desinstalacion paquetes..."
+        uninstall
+    elif [[ $option == "d" ]] || [[ $option == "dotfiles" ]]; then
+        echo "Iniciando instalacion dotfiles..."
         uninstall
     fi
 }

@@ -1,0 +1,2 @@
+# install AMD drivers (OpenGL, Vulkan, Mesa)
+vulkan-utils=sudo add-apt-repository ppa:oibaf/graphics-drivers; sudo apt update -y; sudo apt upgrade -y; sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-utils; sudo apt install -y libosmesa6-dev libgl1-mesa-dev libopenmpi-dev patchelf
