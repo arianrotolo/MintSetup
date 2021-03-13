@@ -81,11 +81,12 @@ printOptions () {
     echo '-----OPTIONS-----'
     echo '[z:zsh] packages'
     echo '[n:normal] packages'
+    echo '[npm] packages'
     echo '[f:full] packages'
     echo '[e:extra] packages'
     echo '[p:python] and pip packages'
-    echo '[u:uninstall] packages'
     echo '[d:dotfiles] files'
+    echo '[u:uninstall] packages'
     echo
 }
 
@@ -111,6 +112,10 @@ installZsh () {
 }
 
 installNpm () {
+    export NVM_DIR="$HOME/.nvm"
+    source $NVM_DIR/nvm.sh
+    eval "nvm install --lts"
+    eval "nvm use --lts"
     xargs -a ./packages/npm.txt npm -g install
 }
 
