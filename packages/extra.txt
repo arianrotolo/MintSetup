@@ -2,3 +2,4 @@ apache2 php libapache2-mod-php phpmyadmin php-mysql mysql-server
 spyder spyder3
 texmaker 
 gradle maven
+firefox-geckodriver
