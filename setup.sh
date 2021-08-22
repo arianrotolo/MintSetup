@@ -9,6 +9,7 @@ declare -A dictionary
 option="normal";
 update="no";
 reboot="no";
+uninstallnode="no";
 package="n"
 alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
 
@@ -111,10 +112,19 @@ installZsh () {
     fi
 }
 
+askUninstallNode () {
+    read -p "Uninstall old Node version? (y/N): " uninstallnode
+    if [[ $uninstallnode == "y" ]] || [[ $uninstallnode == "yes" ]]; then
+        eval "nvm uninstall --lts"
+    fi
+}
+
 installNpm () {
     export NVM_DIR="$HOME/.nvm"
     source $NVM_DIR/nvm.sh
-    eval "nvm uninstall --lts"
+    nodeversion=$(eval "node --version")
+    printf 'Current Node Version is %s\n' "$nodeversion"
+    askUninstallNode
     eval "nvm install --lts"
     eval "nvm use --lts"
     xargs -a ./packages/npm.txt npm -g install
