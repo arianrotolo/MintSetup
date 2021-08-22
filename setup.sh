@@ -114,6 +114,7 @@ installZsh () {
 installNpm () {
     export NVM_DIR="$HOME/.nvm"
     source $NVM_DIR/nvm.sh
+    eval "nvm uninstall --lts"
     eval "nvm install --lts"
     eval "nvm use --lts"
     xargs -a ./packages/npm.txt npm -g install

@@ -1,5 +1,6 @@
 npm-check-updates
 yarn
 netlify-cli
+gatsby-cli
 tldr
 snyk
