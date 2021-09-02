@@ -115,7 +115,7 @@ installZsh () {
 askUninstallNode () {
     read -p "Uninstall old Node version? (y/N): " uninstallnode
     if [[ $uninstallnode == "y" ]] || [[ $uninstallnode == "yes" ]]; then
-        eval "nvm uninstall --lts"
+        eval "nvm uninstall $nodeversion"
     fi
 }
 
@@ -124,6 +124,7 @@ installNpm () {
     source $NVM_DIR/nvm.sh
     nodeversion=$(eval "node --version")
     printf 'Current Node Version is %s\n' "$nodeversion"
+    eval "nvm use latest"
     askUninstallNode
     eval "nvm install --lts"
     eval "nvm use --lts"
