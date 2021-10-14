@@ -10,6 +10,7 @@ option="normal";
 update="no";
 reboot="no";
 uninstallnode="no";
+installDotfiles="no";
 package="n"
 alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
 
@@ -159,6 +160,11 @@ checkOptions () {
         uninstall
     elif [[ $option == "d" ]] || [[ $option == "dotfiles" ]]; then
         echo "Iniciando instalacion dotfiles..."
+        stow -n -v -S -t ~ git bash zsh
+        read -p "Todo ok? Instalar sin modo simulacion? (y/N): " installDotfiles
+        if [[ $installDotfiles == "y" ]] || [[ $installDotfiles == "yes" ]]; then
+            stow -v -S -t ~ git bash zsh
+        fi
     fi
 }
 
