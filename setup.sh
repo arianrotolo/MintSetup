@@ -116,7 +116,7 @@ installZsh () {
 askUninstallNode () {
     read -p "Uninstall old Node version? (y/N): " uninstallnode
     if [[ $uninstallnode == "y" ]] || [[ $uninstallnode == "yes" ]]; then
-        eval "nvm uninstall --lts"
+        eval "nvm uninstall $nodeversion"
     fi
 }
 
