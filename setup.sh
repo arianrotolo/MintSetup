@@ -104,7 +104,7 @@ installZsh () {
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"        
     else
         echo "install theme"
-        git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+        git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
         ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
         
         echo "install plugins"
@@ -116,7 +116,7 @@ installZsh () {
 askUninstallNode () {
     read -p "Uninstall old Node version? (y/N): " uninstallnode
     if [[ $uninstallnode == "y" ]] || [[ $uninstallnode == "yes" ]]; then
-        eval "nvm uninstall $nodeversion"
+        eval "nvm uninstall --lts"
     fi
 }
 
@@ -125,7 +125,6 @@ installNpm () {
     source $NVM_DIR/nvm.sh
     nodeversion=$(eval "node --version")
     printf 'Current Node Version is %s\n' "$nodeversion"
-    eval "nvm use latest"
     askUninstallNode
     eval "nvm install --lts"
     eval "nvm use --lts"
@@ -159,7 +158,7 @@ checkOptions () {
         echo "Iniciando desinstalacion paquetes..."
         uninstall
     elif [[ $option == "d" ]] || [[ $option == "dotfiles" ]]; then
-        echo "Iniciando instalacion dotfiles..."
+        echo "Iniciando instalacion dotfiles (modo simulacion)..."
         stow -n -v -S -t ~ git bash zsh
         read -p "Todo ok? Instalar sin modo simulacion? (y/N): " installDotfiles
         if [[ $installDotfiles == "y" ]] || [[ $installDotfiles == "yes" ]]; then
