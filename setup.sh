@@ -81,13 +81,13 @@ askReboot () {
 
 printOptions () {
     echo '-----OPTIONS-----'
-    echo '[z:zsh] packages'
     echo '[n:normal] packages'
-    echo '[npm] packages'
     echo '[f:full] packages'
+    echo '[z:zsh] packages'
+    echo '[d:dotfiles] files'
+    echo '[npm] packages'
     echo '[e:extra] packages'
     echo '[p:python] and pip packages'
-    echo '[d:dotfiles] files'
     echo '[u:uninstall] packages'
     echo
 }
