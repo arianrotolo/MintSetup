@@ -22,5 +22,6 @@ filezilla
 lm-sensors
 gtkhash
 gnupg
+gnupg2
 seahorse
 stow
