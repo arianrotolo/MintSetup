@@ -117,6 +117,8 @@ askUninstallNode () {
     read -p "Uninstall old Node version? (y/N): " uninstallnode
     if [[ $uninstallnode == "y" ]] || [[ $uninstallnode == "yes" ]]; then
         eval "nvm uninstall $nodeversion"
+        eval "nvm install --lts"
+        eval "nvm use --lts"
     fi
 }
 
@@ -126,8 +128,6 @@ installNpm () {
     nodeversion=$(eval "node --version")
     printf 'Current Node Version is %s\n' "$nodeversion"
     askUninstallNode
-    eval "nvm install --lts"
-    eval "nvm use --lts"
     xargs -a ./packages/npm.txt npm -g install
 }
 
