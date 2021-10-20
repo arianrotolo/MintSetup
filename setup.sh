@@ -114,13 +114,12 @@ installZsh () {
     fi
 }
 
-askUninstallNode () {
+askReinstallNode () {
     read -p "Replace node with new version? (y/N): " uninstallnode
     if [[ $uninstallnode == "y" ]] || [[ $uninstallnode == "yes" ]]; then
         nvm install "lts/*" --reinstall-packages-from="$(nvm current)"
-        #eval "nvm uninstall $currentNodeVersion"
-        #eval "nvm install --lts"
-        #eval "nvm use --lts"
+        echo "NVM new version installed. Uninstalling the old version..."
+        eval "nvm uninstall $currentNodeVersion"
     fi
 }
 
@@ -136,7 +135,7 @@ installNode () {
     source $NVM_DIR/nvm.sh
     currentNodeVersion=$(eval "nvm current")
     printf 'Current Node Version is %s\n' "$currentNodeVersion"
-    askUninstallNode
+    askReinstallNode
     printf 'Current npm global packages\n'
     npm list -g --depth 0
     askInstallnpmPackages
