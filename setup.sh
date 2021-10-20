@@ -10,6 +10,7 @@ option="normal";
 update="no";
 reboot="no";
 uninstallnode="no";
+installnpmPackages="no";
 installDotfiles="no";
 package="n"
 alias version="grep UBUNTU_CODENAME /etc/os-release | grep -o --colour=never \"[a-z-]*$\""
@@ -85,7 +86,7 @@ printOptions () {
     echo '[f:full] packages'
     echo '[z:zsh] packages'
     echo '[d:dotfiles] files'
-    echo '[npm] packages'
+    echo '[node] packages'
     echo '[e:extra] packages'
     echo '[p:python] and pip packages'
     echo '[u:uninstall] packages'
@@ -114,21 +115,29 @@ installZsh () {
 }
 
 askUninstallNode () {
-    read -p "Uninstall old Node version? (y/N): " uninstallnode
+    read -p "Replace node with new version? (y/N): " uninstallnode
     if [[ $uninstallnode == "y" ]] || [[ $uninstallnode == "yes" ]]; then
-        eval "nvm uninstall $nodeversion"
-        eval "nvm install --lts"
-        eval "nvm use --lts"
+        nvm install "lts/*" --reinstall-packages-from="$(nvm current)"
+        #eval "nvm uninstall $currentNodeVersion"
+        #eval "nvm install --lts"
+        #eval "nvm use --lts"
     fi
 }
 
-installNpm () {
+askInstallnpmPackages () {
+    read -p "Install npm packages? (y/N): " installnpmPackages
+    if [[ $installnpmPackages == "y" ]] || [[ $installnpmPackages == "yes" ]]; then
+        xargs -a ./packages/npm.txt npm -g install
+    fi
+}
+
+installNode () {
     export NVM_DIR="$HOME/.nvm"
     source $NVM_DIR/nvm.sh
-    nodeversion=$(eval "node --version")
-    printf 'Current Node Version is %s\n' "$nodeversion"
+    currentNodeVersion=$(eval "nvm current")
+    printf 'Current Node Version is %s\n' "$currentNodeVersion"
     askUninstallNode
-    xargs -a ./packages/npm.txt npm -g install
+    askInstallnpmPackages
 }
 
 checkOptions () {
@@ -152,8 +161,8 @@ checkOptions () {
     elif [[ $option == "f" ]] || [[ $option == "full" ]]; then
         echo "Iniciando instalacion de paquetes full..."
         getDictionary "./packages/full.txt"
-    elif [[ $option == "n" ]] || [[ $option == "npm" ]]; then
-        installNpm
+    elif [[ $option == "node" ]]; then
+        installNode
     elif [[ $option == "u" ]] || [[ $option == "uninstall" ]]; then
         echo "Iniciando desinstalacion paquetes..."
         uninstall
@@ -164,6 +173,8 @@ checkOptions () {
         if [[ $installDotfiles == "y" ]] || [[ $installDotfiles == "yes" ]]; then
             stow -v -S -t ~ git bash zsh
         fi
+    else
+        echo "Opcion incorrecta. Se procede con actualizacion y limpieza."
     fi
 }
 
