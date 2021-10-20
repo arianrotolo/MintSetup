@@ -125,7 +125,7 @@ askUninstallNode () {
 }
 
 askInstallnpmPackages () {
-    read -p "Install npm packages? (y/N): " installnpmPackages
+    read -p "Install/update npm packages? (y/N): " installnpmPackages
     if [[ $installnpmPackages == "y" ]] || [[ $installnpmPackages == "yes" ]]; then
         xargs -a ./packages/npm.txt npm -g install
     fi
@@ -137,6 +137,8 @@ installNode () {
     currentNodeVersion=$(eval "nvm current")
     printf 'Current Node Version is %s\n' "$currentNodeVersion"
     askUninstallNode
+    printf 'Current npm global packages\n'
+    npm list -g --depth 0
     askInstallnpmPackages
 }
 
