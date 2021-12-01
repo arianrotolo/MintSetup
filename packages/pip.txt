@@ -2,3 +2,6 @@ setuptools wheel
 virtualenv 
 grip
 numpy
+scipy
+pandas
+matplotlib
