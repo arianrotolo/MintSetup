@@ -25,3 +25,4 @@ gnupg
 gnupg2
 seahorse
 stow
+imagemagick
