@@ -1,7 +1,5 @@
 # Mint Setup
 
-Idea from: [Alexander Michels](https://github.com/alexandermichels/MintSetup)
-
 ## Table of Contents
 * <a href="#intro">Introduction</a>
 * <a href="#instalation">Instalation</a>
