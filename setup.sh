@@ -101,7 +101,7 @@ installZsh () {
         sudo apt install -y zsh
         sudo chsh -s $(which zsh)
         
-        echo "install Oh My Zsh (copiar .zshrc a /home con stow)"
+        echo "install Oh My Zsh (copy .zshrc to /home with stow to manage dotfiles)"
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"        
     else
         echo "install theme"
