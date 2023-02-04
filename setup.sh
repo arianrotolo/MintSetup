@@ -94,6 +94,7 @@ printOptions () {
 }
 
 installZsh () {
+    # checked last link modification at 02/02/2023
     read -p "Install zsh first time? (y/N): " option
 
     if [[ $option == "y" ]] || [[ $option == "yes" ]]; then
