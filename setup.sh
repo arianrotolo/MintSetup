@@ -102,7 +102,7 @@ installZsh () {
         sudo chsh -s $(which zsh)
         
         echo "install Oh My Zsh (copiar .zshrc a /home con stow)"
-        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"        
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"        
     else
         echo "install theme"
         git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
