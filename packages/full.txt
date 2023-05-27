@@ -5,3 +5,4 @@ code=curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > pa
 spotify=curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -; echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list; sudo apt update -y; apt install spotify-client -y
 brave-browser=curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -; echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list; sudo apt update -y; apt install brave-browser
 copyq=sudo add-apt-repository ppa:hluk/copyq; sudo apt update; sudo apt install copyq
+libreoffice=sudo add-apt-repository ppa:libreoffice/ppa; sudo apt update; sudo apt install libreoffice
